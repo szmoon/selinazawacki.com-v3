@@ -1,6 +1,6 @@
 <template>
   <div class="a-icon">
-    <img :src="imgSrc" />
+    <img :src="imgSrc" :alt="alt" />
     {{ name }}
   </div>
 </template>
@@ -9,6 +9,10 @@
 export default {
   name: "Icon",
   props: {
+    alt: {
+      type: String,
+      required: true
+    },
     icon: {
       type: String,
       required: true
@@ -20,7 +24,6 @@ export default {
   },
   computed: {
     imgSrc() {
-      //   return "@images/icons/folder-pink.png";
       var images = require.context("@images/icons", false, /\.png$/);
       return images("./" + this.icon + ".png");
     }
