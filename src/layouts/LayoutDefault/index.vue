@@ -1,13 +1,17 @@
 <template>
-  <div class="test">
-    BOOO
+  <div class="l-layout-default">
     <router-view />
+    <Taskbar />
   </div>
 </template>
 
 <script>
+import Taskbar from "@globals/taskbar";
 export default {
-  name: "LayoutDefault"
+  name: "LayoutDefault",
+  components: {
+    Taskbar
+  }
 };
 </script>
 
