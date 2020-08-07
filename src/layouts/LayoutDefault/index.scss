@@ -8,3 +8,10 @@
   -o-background-size: cover;
   background-size: cover;
 }
+
+.l-layout-default__icon-container {
+  height: calc(100% - 50px);
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+}
