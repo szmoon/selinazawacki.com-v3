@@ -1,7 +1,7 @@
 import Vue from "vue";
 import VueRouter from "vue-router";
 // import Home from "../views/Home.vue";
-import LayoutDefault from "@layouts/LayoutDefault";
+import LayoutDefault from "~layouts/LayoutDefault";
 
 Vue.use(VueRouter);
 
@@ -16,7 +16,7 @@ const routes = [
         component: () =>
           import(
             // prettier-ignore
-            /* webpackChunkName: "home" */ "@views/Home.vue"
+            /* webpackChunkName: "home" */ "~views/Home.vue"
           )
       },
       {
@@ -25,7 +25,7 @@ const routes = [
         component: () =>
           import(
             // prettier-ignore
-            /* webpackChunkName: "home" */ "@views/About.vue"
+            /* webpackChunkName: "home" */ "~views/About.vue"
           )
       }
     ]

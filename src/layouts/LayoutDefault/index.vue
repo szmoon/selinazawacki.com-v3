@@ -9,8 +9,8 @@
 </template>
 
 <script>
-import Icon from "@atoms/icon";
-import Taskbar from "@globals/taskbar";
+import Icon from "~atoms/icon";
+import Taskbar from "~globals/taskbar";
 
 export default {
   name: "LayoutDefault",

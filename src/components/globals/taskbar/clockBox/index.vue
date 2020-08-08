@@ -2,7 +2,7 @@
   <div class="g-taskbar__clock-box">
     <!-- volume icon -->
     <img
-      src="@/assets/images/volume.png"
+      src="~images/volume.png"
       alt="volume icon"
       class="g-taskbar__clock-box__icon"
     />
@@ -12,24 +12,24 @@
 </template>
 
 <script>
-import { format } from "date-fns";
+import { format } from 'date-fns';
 
 export default {
-  name: "ClockBox",
+  name: 'ClockBox',
   data() {
     return {
       currentTime: undefined
     };
   },
   created() {
-    this.currentTime = format(new Date(), "h:mm a");
+    this.currentTime = format(new Date(), 'h:mm a');
     setInterval(function() {
-      this.currentTime = format(new Date(), "h:mm a");
+      this.currentTime = format(new Date(), 'h:mm a');
     }, 30000);
   }
 };
 </script>
 
 <style lang="scss">
-@import "./index.scss";
+@import './index.scss';
 </style>

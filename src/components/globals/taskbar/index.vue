@@ -6,11 +6,11 @@
 </template>
 
 <script>
-import ClockBox from "./clockBox";
-import StartButton from "./startButton";
+import ClockBox from './clockBox';
+import StartButton from './startButton';
 
 export default {
-  name: "Taskbar",
+  name: 'Taskbar',
   components: {
     ClockBox,
     StartButton
@@ -19,5 +19,5 @@ export default {
 </script>
 
 <style lang="scss">
-@import "./index.scss";
+@import './index.scss';
 </style>

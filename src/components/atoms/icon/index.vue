@@ -7,7 +7,7 @@
 
 <script>
 export default {
-  name: "Icon",
+  name: 'Icon',
   props: {
     alt: {
       type: String,
@@ -24,13 +24,13 @@ export default {
   },
   computed: {
     imgSrc() {
-      var images = require.context("@images/icons", false, /\.png$/);
-      return images("./" + this.icon + ".png");
+      var images = require.context('images/icons', false, /\.png$/);
+      return images('./' + this.icon + '.png');
     }
   }
 };
 </script>
 
 <style lang="scss">
-@import "./index.scss";
+@import './index.scss';
 </style>
