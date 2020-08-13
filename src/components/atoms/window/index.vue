@@ -3,7 +3,7 @@
     <div class="a-window__top-bar">
       window name
       <div class="a-window__close-button">
-        X
+        <font-awesome-icon icon="times" color="white" />
       </div>
     </div>
     <div class="a-window__menu-bar">
@@ -20,6 +20,7 @@
 </template>
 
 <script>
+import '~atoms/fontAwesomeIcons';
 export default {
   name: 'Window',
   props: {
