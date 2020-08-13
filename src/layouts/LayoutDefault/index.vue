@@ -5,7 +5,7 @@
       <Icon icon="folder-pink" name="about" alt="Pink Folder Icon" />
     </div>
     <Taskbar />
-    <Window />
+    <Window name="about" aria="About window" />
   </div>
 </template>
 

@@ -1,11 +1,14 @@
 <template>
-  <div class="a-window">
+  <div class="a-window" :aria-label="aria">
+    <!-- top bar -->
     <div class="a-window__top-bar">
-      window name about
-      <div class="a-window__close-button">
+      {{ name }}
+      <!-- close button -->
+      <div class="a-window__close-button" aria-label="close button">
         <font-awesome-icon icon="times" color="white" />
       </div>
     </div>
+    <!-- menu -->
     <div class="a-window__menu-bar">
       <span>File</span>
       <span>Home</span>
@@ -13,9 +16,10 @@
       <span>View</span>
       <span>Manage</span>
     </div>
-    WINDOW
-    <!-- <img :src="imgSrc" :alt="alt" />
-    {{ name }} -->
+    <!-- window content -->
+    <div class="a-window__content">
+      window content
+    </div>
   </div>
 </template>
 
@@ -24,25 +28,16 @@ import '~atoms/fontAwesomeIcons';
 export default {
   name: 'Window',
   props: {
-    // alt: {
-    //   type: String,
-    //   required: true
-    // },
-    // icon: {
-    //   type: String,
-    //   required: true
-    // },
-    // name: {
-    //   type: String,
-    //   required: true
-    // }
+    aria: {
+      type: String,
+      required: true
+    },
+    name: {
+      type: String,
+      required: true
+    }
   },
-  computed: {
-    // imgSrc() {
-    //   var images = require.context('images/icons', false, /\.png$/);
-    //   return images('./' + this.icon + '.png');
-    // }
-  }
+  computed: {}
 };
 </script>
 
