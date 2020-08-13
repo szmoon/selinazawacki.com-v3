@@ -1,7 +1,7 @@
 <template>
   <div class="a-window">
     <div class="a-window__top-bar">
-      window name
+      window name about
       <div class="a-window__close-button">
         <font-awesome-icon icon="times" color="white" />
       </div>
