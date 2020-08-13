@@ -5,22 +5,25 @@
       <Icon icon="folder-pink" name="about" alt="Pink Folder Icon" />
     </div>
     <Taskbar />
+    <Window />
   </div>
 </template>
 
 <script>
-import Icon from "~atoms/icon";
-import Taskbar from "~globals/taskbar";
+import Icon from '~atoms/icon';
+import Taskbar from '~globals/taskbar';
+import Window from '~atoms/window';
 
 export default {
-  name: "LayoutDefault",
+  name: 'LayoutDefault',
   components: {
     Icon,
-    Taskbar
+    Taskbar,
+    Window
   }
 };
 </script>
 
 <style lang="scss">
-@import "./index.scss";
+@import './index.scss';
 </style>
