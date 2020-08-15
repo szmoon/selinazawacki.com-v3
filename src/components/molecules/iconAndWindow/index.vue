@@ -10,7 +10,7 @@
     <Window
       v-if="isOpen"
       :aria="windowAria"
-      :initialPosition="{ top: 50, left: 400 }"
+      :initialPosition="windowPosition"
       :name="windowName"
       :title="windowTitle"
       @closeWindow="closeWindow"
@@ -56,6 +56,10 @@ export default {
       type: String,
       required: true
     },
+    windowPosition: {
+      type: Object,
+      required: true
+    },
     windowTitle: {
       type: String,
       required: true
@@ -66,7 +70,21 @@ export default {
       isOpen: false
     };
   },
-  computed: {},
+  created() {
+    let query = this.$route.query;
+    if (!query.window) {
+      return;
+    }
+    if (Array.isArray(query.window)) {
+      if (query.window.includes(this.name)) {
+        this.isOpen = true;
+      }
+    } else {
+      if (query.window == this.windowName) {
+        this.isOpen = true;
+      }
+    }
+  },
   methods: {
     closeWindow() {
       this.isOpen = false;
@@ -109,5 +127,3 @@ export default {
   }
 };
 </script>
-
-<style lang="scss"></style>

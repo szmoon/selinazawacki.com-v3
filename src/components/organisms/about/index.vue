@@ -6,6 +6,7 @@
     icon-name="about"
     window-name="about"
     window-aria="About window"
+    :window-position="{ top: 50, left: 400 }"
     window-title="about"
   >
     <template v-slot:windowContent>
