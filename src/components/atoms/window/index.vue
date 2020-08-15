@@ -1,7 +1,12 @@
 <template>
-  <div class="a-window" id="mydiv" :aria-label="aria">
+  <div
+    class="a-window"
+    ref="window"
+    :aria-label="aria"
+    :style="{ top: top, left: left }"
+  >
     <!-- top bar -->
-    <div class="a-window__top-bar" id="mydivheader">
+    <div class="a-window__top-bar" @mousedown="beginDrag" @mouseup="endDrag">
       {{ name }}
       <!-- close button -->
       <div class="a-window__close-button" aria-label="close button">
@@ -18,6 +23,7 @@
     </div>
     <!-- window content -->
     <div class="a-window__content">
+      <slot></slot>
       window content
     </div>
   </div>
@@ -39,56 +45,48 @@ export default {
   },
   data() {
     return {
-      pos1: 0,
-      pos2: 0,
-      pos3: 0,
-      pos4: 0,
-      elmnt: undefined
+      startX: 0,
+      startY: 0,
+      top: '50px',
+      left: '400px'
     };
   },
   computed: {},
-  mounted() {
-    this.dragElement(document.getElementById('mydiv'));
-    this.elmnt = document.getElementById('mydiv');
-  },
+  //   mounted() {
+  //     document.addEventListener('mouseleave', this.endDrag);
+  //   },
+  //   beforeDestroy() {
+  //     document.removeEventListener('mouseleave', this.endDrag);
+  //   },
   methods: {
-    dragElement(elmnt) {
-      if (document.getElementById(elmnt.id + 'header')) {
-        // if present, the header is where you move the DIV from:
-        document.getElementById(
-          elmnt.id + 'header'
-        ).onmousedown = this.onMouseDown;
-      } else {
-        // otherwise, move the DIV from anywhere inside the DIV:
-        elmnt.onmousedown = this.onMouseDown;
-      }
-    },
-    onMouseDown(e) {
-      e = e || window.event;
+    beginDrag(e) {
       e.preventDefault();
-      // get the mouse cursor position at startup:
-      this.pos3 = e.clientX;
-      this.pos4 = e.clientY;
-      document.onmouseup = this.closeDragElement;
-      // call a function whenever the cursor moves:
-      document.onmousemove = this.elementDrag;
+      // get/set the mouse cursor position at start
+      this.startX = e.clientX;
+      this.startY = e.clientY;
+
+      // add event listener for mousemove
+      document.addEventListener('mousemove', this.drag);
     },
-    closeDragElement() {
-      // stop moving when mouse button is released:
-      document.onmouseup = null;
-      document.onmousemove = null;
+    endDrag() {
+      // remove event listener for mousemove
+      document.removeEventListener('mousemove', this.drag);
     },
-    elementDrag(e) {
-      e = e || window.event;
+    drag(e) {
       e.preventDefault();
-      // calculate the new cursor position:
-      this.pos1 = this.pos3 - e.clientX;
-      this.pos2 = this.pos4 - e.clientY;
-      this.pos3 = e.clientX;
-      this.pos4 = e.clientY;
-      // set the element's new position:
-      this.elmnt.style.top = this.elmnt.offsetTop - this.pos2 + 'px';
-      this.elmnt.style.left = this.elmnt.offsetLeft - this.pos1 + 'px';
+
+      // calculate the new cursor position
+      let pos1 = this.startX - e.clientX;
+      let pos2 = this.startY - e.clientY;
+      this.startX = e.clientX;
+      this.startY = e.clientY;
+
+      // calculate and set the element's new position
+      let newTop = this.$refs.window.offsetTop - pos2 + 'px';
+      let newBottom = this.$refs.window.offsetLeft - pos1 + 'px';
+
+      this.top = newTop;
+      this.left = newBottom;
     }
   }
 };
