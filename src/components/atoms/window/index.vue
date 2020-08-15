@@ -7,9 +7,13 @@
   >
     <!-- top bar -->
     <div class="a-window__top-bar" @mousedown="beginDrag" @mouseup="endDrag">
-      {{ name }}
+      {{ title }}
       <!-- close button -->
-      <div class="a-window__close-button" aria-label="close button">
+      <div
+        class="a-window__close-button"
+        aria-label="close button"
+        @click="closeWindow"
+      >
         <font-awesome-icon icon="times" color="white" />
       </div>
     </div>
@@ -23,8 +27,7 @@
     </div>
     <!-- window content -->
     <div class="a-window__content">
-      <slot></slot>
-      window content
+      <slot>default window content</slot>
     </div>
   </div>
 </template>
@@ -38,7 +41,15 @@ export default {
       type: String,
       required: true
     },
+    initialPosition: {
+      type: Object,
+      required: true
+    },
     name: {
+      type: String,
+      required: true
+    },
+    title: {
       type: String,
       required: true
     }
@@ -47,11 +58,15 @@ export default {
     return {
       startX: 0,
       startY: 0,
-      top: '50px',
-      left: '400px'
+      top: undefined,
+      left: undefined
     };
   },
-  computed: {},
+  created() {
+    // set initial window position
+    this.top = this.initialPosition.top + 'px';
+    this.left = this.initialPosition.left + 'px';
+  },
   //   mounted() {
   //     document.addEventListener('mouseleave', this.endDrag);
   //   },
@@ -68,9 +83,8 @@ export default {
       // add event listener for mousemove
       document.addEventListener('mousemove', this.drag);
     },
-    endDrag() {
-      // remove event listener for mousemove
-      document.removeEventListener('mousemove', this.drag);
+    closeWindow() {
+      this.$emit('closeWindow');
     },
     drag(e) {
       e.preventDefault();
@@ -87,6 +101,10 @@ export default {
 
       this.top = newTop;
       this.left = newBottom;
+    },
+    endDrag() {
+      // remove event listener for mousemove
+      document.removeEventListener('mousemove', this.drag);
     }
   }
 };

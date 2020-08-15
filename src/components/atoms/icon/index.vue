@@ -1,5 +1,5 @@
 <template>
-  <div class="a-icon">
+  <div class="a-icon" @dblclick="doubleClickIcon" :aria-label="aria">
     <img :src="imgSrc" :alt="alt" />
     {{ name }}
   </div>
@@ -10,6 +10,10 @@ export default {
   name: 'Icon',
   props: {
     alt: {
+      type: String,
+      required: true
+    },
+    aria: {
       type: String,
       required: true
     },
@@ -26,6 +30,11 @@ export default {
     imgSrc() {
       var images = require.context('images/icons', false, /\.png$/);
       return images('./' + this.icon + '.png');
+    }
+  },
+  methods: {
+    doubleClickIcon() {
+      this.$emit('doubleClickIcon');
     }
   }
 };
