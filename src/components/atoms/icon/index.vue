@@ -1,7 +1,9 @@
 <template>
-  <div class="a-icon" @dblclick="doubleClickIcon" :aria-label="aria">
-    <img :src="imgSrc" :alt="alt" />
-    {{ name }}
+  <div :aria-label="aria" class="a-icon" @dblclick="doubleClickIcon">
+    <div :class="iconClass">
+      <img :src="imgSrc" :alt="alt" />
+    </div>
+    {{ label }}
   </div>
 </template>
 
@@ -17,19 +19,39 @@ export default {
       type: String,
       required: true
     },
-    icon: {
+    iconName: {
       type: String,
-      required: true
+      default: undefined
     },
-    name: {
+    iconImage: {
+      type: String,
+      default: undefined
+    },
+    label: {
       type: String,
       required: true
     }
   },
   computed: {
+    iconClass() {
+      if (this.iconName) {
+        return 'a-icon__icon-container';
+      }
+      return 'a-icon__image-container';
+    },
+    isIcon() {
+      if (this.iconName) {
+        return true;
+      }
+      return false;
+    },
     imgSrc() {
-      var images = require.context('images/icons', false, /\.png$/);
-      return images('./' + this.icon + '.png');
+      if (this.isIcon) {
+        const images = require.context('images/icons', false, /\.png$/);
+        return images('./' + this.iconName + '.png');
+      }
+      const images = require.context('images', false, /\.png$/);
+      return images('./' + this.iconImage + '.png');
     }
   },
   methods: {

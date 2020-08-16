@@ -1,5 +1,6 @@
 <template>
   <div
+    :key="name"
     class="a-window"
     ref="window"
     :aria-label="aria"
@@ -87,6 +88,8 @@ export default {
       this.$emit('closeWindow');
     },
     drag(e) {
+      console.log('e', e);
+      //   console.log('this.name', test);
       e.preventDefault();
 
       // calculate the new cursor position

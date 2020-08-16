@@ -1,28 +1,30 @@
 <template>
   <IconAndWindow
-    icon-name="folder-pink"
+    icon-image="selina"
     icon-alt="Pink Folder Icon"
-    icon-aria="Open about window"
-    icon-label="about"
-    window-name="about"
-    window-aria="About window"
+    icon-aria="Open image selina.png"
+    icon-label="selina.png"
+    window-name="aboutimg"
+    window-aria="About image window (contains selina.png)"
     :window-position="{ top: 50, left: 400 }"
-    window-label="about"
+    window-label="selina.png"
   >
+    <!-- <template v-slot:icon>
+      boop
+    </template> -->
     <template v-slot:windowContent>
-      <AboutImg />
+      selina.png
     </template>
   </IconAndWindow>
 </template>
 
 <script>
-import AboutImg from '~organisms/about/aboutImg';
 import IconAndWindow from '~molecules/iconAndWindow';
+// import IconImage from '~atoms/iconImage';
 
 export default {
-  name: 'About',
+  name: 'AboutImg',
   components: {
-    AboutImg,
     IconAndWindow
   },
   data() {

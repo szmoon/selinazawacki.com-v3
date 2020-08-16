@@ -1,18 +1,21 @@
 <template>
-  <div>
-    <Icon
-      :icon="icon"
-      :name="iconName"
-      :alt="iconAlt"
-      :aria="iconAria"
-      @doubleClickIcon="doubleClickIcon"
-    />
+  <div class="m-icon-and-window">
+    <slot name="icon">
+      <Icon
+        :icon-image="iconImage"
+        :icon-name="iconName"
+        :label="iconLabel"
+        :alt="iconAlt"
+        :aria="iconAria"
+        @doubleClickIcon="doubleClickIcon"
+      />
+    </slot>
     <Window
-      v-if="isOpen"
+      v-show="isOpen"
       :aria="windowAria"
       :initialPosition="windowPosition"
       :name="windowName"
-      :title="windowTitle"
+      :title="windowLabel"
       @closeWindow="closeWindow"
     >
       <slot name="windowContent"></slot>
@@ -31,11 +34,6 @@ export default {
     Window
   },
   props: {
-    // icon image to use
-    icon: {
-      type: String,
-      required: true
-    },
     iconAlt: {
       type: String,
       required: true
@@ -44,11 +42,24 @@ export default {
       type: String,
       required: true
     },
-    iconName: {
+    iconImage: {
+      type: String,
+      default: undefined
+    },
+    iconLabel: {
       type: String,
       required: true
     },
+    // icon image to use
+    iconName: {
+      type: String,
+      default: undefined
+    },
     windowAria: {
+      type: String,
+      required: true
+    },
+    windowLabel: {
       type: String,
       required: true
     },
@@ -58,10 +69,6 @@ export default {
     },
     windowPosition: {
       type: Object,
-      required: true
-    },
-    windowTitle: {
-      type: String,
       required: true
     }
   },
@@ -75,8 +82,9 @@ export default {
     if (!query.window) {
       return;
     }
+
     if (Array.isArray(query.window)) {
-      if (query.window.includes(this.name)) {
+      if (query.window.includes(this.windowName)) {
         this.isOpen = true;
       }
     } else {
@@ -127,3 +135,7 @@ export default {
   }
 };
 </script>
+
+<style lang="scss">
+@import './index.scss';
+</style>
