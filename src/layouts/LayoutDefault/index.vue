@@ -2,7 +2,6 @@
   <div class="l-layout-default">
     <router-view />
     <div class="l-layout-default__icon-container">
-      <!-- <About /> -->
       <Icon
         v-for="icon in iconData"
         :key="icon.iconName"
@@ -21,22 +20,19 @@
 </template>
 
 <script>
-// import About from '~organisms/about';
-import Icon from '~atoms/icon';
 import AboutWindow from '~organisms/windows/about';
 import AboutImgWindow from '~organisms/windows/aboutImg';
-
-import iconData from '~data/icons.json';
+import Icon from '~atoms/icon';
 import Taskbar from '~globals/taskbar';
+import iconData from '~data/icons.json';
 
 export default {
   name: 'LayoutDefault',
   components: {
-    // About,
-    Icon,
-    Taskbar,
     AboutImgWindow,
-    AboutWindow
+    AboutWindow,
+    Icon,
+    Taskbar
   },
   data() {
     return {

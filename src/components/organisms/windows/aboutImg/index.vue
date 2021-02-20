@@ -9,20 +9,6 @@
       IMGAE
     </Window>
   </div>
-  <!-- <IconAndWindow
-    icon-name="folder-pink"
-    icon-alt="Pink Folder Icon"
-    icon-aria="Open about window"
-    icon-label="about"
-    window-name="about"
-    window-aria="About window"
-    :window-position="{ top: 50, left: 400 }"
-    window-label="about"
-  >
-    <template v-slot:windowContent>
-      <AboutImg />
-    </template>
-  </IconAndWindow> -->
 </template>
 
 <script>
