@@ -1,40 +1,28 @@
 <template>
-  <div class="m-icon-and-window">
-    <Window
-      aria="About window"
-      :initialPosition="{ top: 50, left: 400 }"
-      name="about"
-      title="about"
-    >
-      <Icon
-        v-for="icon in aboutIconData"
-        :key="icon.iconName"
-        :icon-image="icon.iconImage"
-        :icon-name="icon.iconName"
-        :label="icon.iconLabel"
-        :alt="icon.iconAlt"
-        :aria="icon.iconAria"
-        :window-name="icon.windowName"
-      />
-    </Window>
-  </div>
+  <Window
+    aria="About window"
+    :initialPosition="{ top: 50, left: 400 }"
+    name="about"
+    title="about"
+  >
+    <IconList :icon-data="aboutIconData" />
+  </Window>
 </template>
 
 <script>
-import Icon from '~atoms/icon';
+import IconList from '~molecules/iconList';
 import Window from '~atoms/window';
-import aboutIconData from '~data/aboutIcons.json';
+import aboutIconData from '~data/about/icons.json';
 
 export default {
   name: 'About',
   components: {
     Window,
-    Icon
+    IconList
   },
   data() {
     return {
-      aboutIconData,
-      isOpen: false
+      aboutIconData
     };
   }
 };
