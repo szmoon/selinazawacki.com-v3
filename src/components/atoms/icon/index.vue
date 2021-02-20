@@ -30,6 +30,10 @@ export default {
     label: {
       type: String,
       required: true
+    },
+    windowName: {
+      type: String,
+      required: true
     }
   },
   computed: {
@@ -56,7 +60,22 @@ export default {
   },
   methods: {
     doubleClickIcon() {
-      this.$emit('doubleClickIcon');
+      // get current open windows
+      let openWindows = [];
+      if (this.$route.query.window) {
+        let windowQuery = this.$route.query.window;
+        if (Array.isArray(windowQuery)) {
+          openWindows = [...windowQuery];
+        } else {
+          openWindows = [windowQuery];
+        }
+      }
+      if (!openWindows.includes(this.windowName)) {
+        openWindows.push(this.windowName);
+        this.$router.push({
+          query: { window: openWindows }
+        });
+      }
     }
   }
 };

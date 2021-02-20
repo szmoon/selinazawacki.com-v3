@@ -1,5 +1,6 @@
 <template>
   <div
+    v-if="isOpen"
     :key="name"
     class="a-window"
     ref="window"
@@ -60,20 +61,29 @@ export default {
       startX: 0,
       startY: 0,
       top: undefined,
-      left: undefined
+      left: undefined,
+      isOpen: false
     };
   },
   created() {
     // set initial window position
     this.top = this.initialPosition.top + 'px';
     this.left = this.initialPosition.left + 'px';
+
+    this.checkWindowStatus();
   },
-  //   mounted() {
-  //     document.addEventListener('mouseleave', this.endDrag);
-  //   },
-  //   beforeDestroy() {
-  //     document.removeEventListener('mouseleave', this.endDrag);
-  //   },
+  watch: {
+    $route() {
+      console.log('change!@');
+      this.checkWindowStatus();
+    }
+  },
+  mounted() {
+    document.addEventListener('mouseleave', this.endDrag);
+  },
+  beforeDestroy() {
+    document.removeEventListener('mouseleave', this.endDrag);
+  },
   methods: {
     beginDrag(e) {
       e.preventDefault();
@@ -84,11 +94,47 @@ export default {
       // add event listener for mousemove
       document.addEventListener('mousemove', this.drag);
     },
+    checkWindowStatus() {
+      // see if window should be open
+      let query = this.$route.query;
+      if (!query.window) {
+        this.isOpen = false;
+      }
+
+      if (Array.isArray(query.window)) {
+        if (query.window.includes(this.name)) {
+          this.isOpen = true;
+        } else {
+          this.isOpen = false;
+        }
+      } else {
+        if (query.window == this.name) {
+          this.isOpen = true;
+        } else {
+          this.isOpen = false;
+        }
+      }
+    },
     closeWindow() {
-      this.$emit('closeWindow');
+      //   this.isOpen = false;
+
+      let openWindows = [];
+      let windowQuery = this.$route.query.window;
+
+      if (Array.isArray(windowQuery)) {
+        openWindows = [...windowQuery];
+      } else {
+        openWindows = [windowQuery];
+      }
+
+      let newWindows = openWindows.filter(item => item !== this.name);
+
+      this.$router.push({
+        query: { window: newWindows }
+      });
     },
     drag(e) {
-      console.log('e', e);
+      //   console.log('e', e);
       //   console.log('this.name', test);
       e.preventDefault();
 

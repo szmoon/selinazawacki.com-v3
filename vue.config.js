@@ -8,6 +8,7 @@ module.exports = {
         images: path.resolve('src/assets/images'),
         '~atoms': path.resolve('src/components/atoms'),
         '~components': path.resolve('src/components'),
+        '~data': path.resolve('src/data'),
         '~globals': path.resolve('src/components/globals'),
         '~layouts': path.resolve('src/layouts'),
         '~molecules': path.resolve('src/components/molecules'),
