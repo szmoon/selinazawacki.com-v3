@@ -1,9 +1,9 @@
 <template>
   <Window
     aria="About window"
-    :initialPosition="{ top: 50, left: 400 }"
+    :initialPosition="initialPosition"
     name="about"
-    :size="{ width: '500px', height: '400px' }"
+    :size="windowSize"
     title="about"
   >
     <IconList :icon-data="aboutIconData" />
@@ -25,6 +25,20 @@ export default {
     return {
       aboutIconData
     };
+  },
+  computed: {
+    initialPosition() {
+      return { top: '10%', left: '10%' };
+    },
+    windowSize() {
+      // turn these into devices helpers
+      //   console.log('this.window.width', window.innerWidth);
+      let width = window.innerWidth;
+      if (width <= 767) {
+        return { width: '300px', height: '300px' };
+      }
+      return { width: '500px', height: '400px' };
+    }
   }
 };
 </script>

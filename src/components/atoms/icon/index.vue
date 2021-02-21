@@ -1,5 +1,10 @@
 <template>
-  <div :aria-label="aria" class="a-icon" @dblclick="doubleClickIcon">
+  <div
+    :aria-label="aria"
+    class="a-icon"
+    @dblclick="doubleClickIcon"
+    v-touch="doubleClickIcon"
+  >
     <div :class="iconClass">
       <img :src="imgSrc" :alt="alt" />
     </div>

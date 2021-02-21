@@ -8,7 +8,13 @@
     :style="windowStyle"
   >
     <!-- top bar -->
-    <div class="a-window__top-bar" @mousedown="beginDrag" @mouseup="endDrag">
+    <div
+      class="a-window__top-bar"
+      @mousedown="beginDrag"
+      @mouseup="endDrag"
+      v-touch:start="touchBeginDrag"
+      v-touch:moving="touchDrag"
+    >
       {{ title }}
       <!-- close button -->
       <div
@@ -96,14 +102,13 @@ export default {
   },
   created() {
     // set initial window position
-    this.top = this.initialPosition.top + 'px';
-    this.left = this.initialPosition.left + 'px';
+    this.top = this.initialPosition.top;
+    this.left = this.initialPosition.left;
 
     this.checkWindowStatus();
   },
   watch: {
     $route() {
-      console.log('change!@');
       this.checkWindowStatus();
     }
   },
@@ -183,6 +188,25 @@ export default {
     endDrag() {
       // remove event listener for mousemove
       document.removeEventListener('mousemove', this.drag);
+    },
+    touchBeginDrag(e) {
+      // get/set the mouse cursor position at start
+      this.startX = e.changedTouches[0].clientX;
+      this.startY = e.changedTouches[0].clientY;
+    },
+    touchDrag(e) {
+      // calculate the new cursor position
+      let pos1 = this.startX - e.changedTouches[0].clientX;
+      let pos2 = this.startY - e.changedTouches[0].clientY;
+      this.startX = e.changedTouches[0].clientX;
+      this.startY = e.changedTouches[0].clientY;
+
+      // calculate and set the element's new position
+      let newTop = this.$refs.window.offsetTop - pos2 + 'px';
+      let newBottom = this.$refs.window.offsetLeft - pos1 + 'px';
+
+      this.top = newTop;
+      this.left = newBottom;
     }
   }
 };
