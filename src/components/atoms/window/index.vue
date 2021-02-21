@@ -190,11 +190,14 @@ export default {
       document.removeEventListener('mousemove', this.drag);
     },
     touchBeginDrag(e) {
+      if (!e.changedTouches) return;
       // get/set the mouse cursor position at start
       this.startX = e.changedTouches[0].clientX;
       this.startY = e.changedTouches[0].clientY;
     },
     touchDrag(e) {
+      if (!e.changedTouches) return;
+
       // calculate the new cursor position
       let pos1 = this.startX - e.changedTouches[0].clientX;
       let pos2 = this.startY - e.changedTouches[0].clientY;
