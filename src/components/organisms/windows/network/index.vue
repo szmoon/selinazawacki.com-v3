@@ -3,6 +3,7 @@
     aria="Network links window"
     :initialPosition="{ top: 150, left: 300 }"
     name="network"
+    :size="{ width: '400px', height: '350px' }"
     title="network"
   >
     <IconList :icon-data="networkIconData" />
@@ -12,7 +13,7 @@
 <script>
 import IconList from '~molecules/iconList';
 import Window from '~atoms/window';
-import networkIconData from '~data/network/icons.json';
+import networkIconData from './icons.json';
 
 export default {
   name: 'Network',

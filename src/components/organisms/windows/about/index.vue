@@ -3,6 +3,7 @@
     aria="About window"
     :initialPosition="{ top: 50, left: 400 }"
     name="about"
+    :size="{ width: '500px', height: '400px' }"
     title="about"
   >
     <IconList :icon-data="aboutIconData" />
@@ -12,7 +13,7 @@
 <script>
 import IconList from '~molecules/iconList';
 import Window from '~atoms/window';
-import aboutIconData from '~data/about/icons.json';
+import aboutIconData from './icons.json';
 
 export default {
   name: 'About',

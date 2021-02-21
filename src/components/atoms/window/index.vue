@@ -5,7 +5,7 @@
     class="a-window"
     ref="window"
     :aria-label="aria"
-    :style="{ top: top, left: left }"
+    :style="windowStyle"
   >
     <!-- top bar -->
     <div class="a-window__top-bar" @mousedown="beginDrag" @mouseup="endDrag">
@@ -28,7 +28,7 @@
       <span>Manage</span>
     </div>
     <!-- window content -->
-    <div class="a-window__content">
+    <div :class="contentClass">
       <slot>default window content</slot>
     </div>
   </div>
@@ -47,9 +47,20 @@ export default {
       type: Object,
       required: true
     },
+    modifier: {
+      type: String,
+      default: 'icons',
+      validator(value) {
+        return ['icons', 'image', 'text'].indexOf(value) !== -1;
+      }
+    },
     name: {
       type: String,
       required: true
+    },
+    size: {
+      type: Object,
+      default: undefined
     },
     title: {
       type: String,
@@ -64,6 +75,24 @@ export default {
       left: undefined,
       isOpen: false
     };
+  },
+  computed: {
+    contentClass() {
+      const classes = ['a-window__content'];
+
+      let extraClass = classes[0] + '--' + this.modifier;
+      classes.push(extraClass);
+
+      return classes;
+    },
+    windowStyle() {
+      let style = { top: this.top, left: this.left };
+      if (this.size) {
+        style.height = this.size.height;
+        style.width = this.size.width;
+      }
+      return style;
+    }
   },
   created() {
     // set initial window position

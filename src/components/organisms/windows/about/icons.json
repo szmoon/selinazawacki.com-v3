@@ -5,5 +5,12 @@
     "iconAria": "Open selina.png window",
     "iconLabel": "selina.png",
     "windowName": "aboutImg"
+  },
+  {
+    "iconName": "txt",
+    "iconAlt": "Notepad icon",
+    "iconAria": "Open about.txt window",
+    "iconLabel": "about.txt",
+    "windowName": "aboutTxt"
   }
 ]
