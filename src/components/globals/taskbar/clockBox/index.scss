@@ -13,6 +13,9 @@
   font-size: 15px;
   font-weight: bold;
   color: #ebebeb;
+  @include breakpoint('xsmall') {
+    width: 150px;
+  }
 }
 
 .g-taskbar__clock-box__icon {

@@ -1,6 +1,7 @@
 @import '~styles/base';
 
 .a-icon {
+  //   border: 1px solid red;
   margin: 15px;
   width: 80px;
   display: flex;
@@ -11,15 +12,25 @@
   font-weight: bold;
   color: #ffffff;
   font-size: 16px;
-  text-shadow: 1px 1px 5px rgb(78, 78, 78);
+  text-shadow: 1px 1px 5px rgb(67, 67, 67);
   @include no-highlight;
+  img {
+    width: 100%;
+  }
+  @include breakpoint('xsmall') {
+    width: 60px;
+    font-size: 12px;
+  }
 }
 
-.a-icon__icon-container {
+.a-icon__container--icon {
   width: 60px;
+  @include breakpoint('xsmall') {
+    width: 40px;
+  }
 }
 
-.a-icon__image-container {
+.a-icon__container--image {
   width: 60px;
   height: 60px;
   display: flex;

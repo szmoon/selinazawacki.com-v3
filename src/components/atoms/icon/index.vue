@@ -43,9 +43,9 @@ export default {
   computed: {
     iconClass() {
       if (this.iconName) {
-        return 'a-icon__icon-container';
+        return 'a-icon__container--icon';
       }
-      return 'a-icon__image-container';
+      return 'a-icon__container--image';
     },
     isIcon() {
       if (this.iconName) {
