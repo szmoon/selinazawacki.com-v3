@@ -5,5 +5,26 @@
     "iconAria": "Open about window",
     "iconLabel": "about",
     "windowName": "about"
+  },
+  {
+    "iconName": "network",
+    "iconAlt": "Computer Network Icon",
+    "iconAria": "Open network window",
+    "iconLabel": "network",
+    "windowName": "network"
+  },
+  {
+    "iconName": "txt",
+    "iconAlt": "Notepad Icon",
+    "iconAria": "Open contact window",
+    "iconLabel": "contact.txt",
+    "windowName": "contact"
+  },
+  {
+    "iconName": "computer",
+    "iconAlt": "Computer Icon",
+    "iconAria": "Open blog in new window",
+    "iconLabel": "blog",
+    "href": "http://blog.selinazawacki.com/"
   }
 ]

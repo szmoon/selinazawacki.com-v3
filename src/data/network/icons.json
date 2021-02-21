@@ -1,0 +1,23 @@
+[
+  {
+    "iconName": "twitter",
+    "iconAlt": "Twitter logo",
+    "iconAria": "Open selina's twitter",
+    "iconLabel": "twitter",
+    "href": "https://twitter.com/selinazawacki"
+  },
+  {
+    "iconName": "linkedin",
+    "iconAlt": "Linkedin logo",
+    "iconAria": "Open selina's linkedin",
+    "iconLabel": "linkedin",
+    "href": "https://www.linkedin.com/in/selina-chang-yi-zawacki/"
+  },
+  {
+    "iconName": "github",
+    "iconAlt": "Github logo",
+    "iconAria": "Open selina's github",
+    "iconLabel": "github",
+    "href": "https://github.com/szmoon"
+  }
+]

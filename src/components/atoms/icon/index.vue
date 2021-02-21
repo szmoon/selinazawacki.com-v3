@@ -19,6 +19,10 @@ export default {
       type: String,
       required: true
     },
+    href: {
+      type: String,
+      default: undefined
+    },
     iconName: {
       type: String,
       default: undefined
@@ -33,7 +37,7 @@ export default {
     },
     windowName: {
       type: String,
-      required: true
+      default: undefined
     }
   },
   computed: {
@@ -60,6 +64,10 @@ export default {
   },
   methods: {
     doubleClickIcon() {
+      if (this.href) {
+        window.open(this.href, '_blank');
+        return;
+      }
       // get current open windows
       let openWindows = [];
       if (this.$route.query.window) {

@@ -1,10 +1,11 @@
 <template>
-  <div class="m-icon-list">
+  <div :class="classes">
     <Icon
       v-for="icon in iconData"
       :key="icon.iconName"
       :alt="icon.iconAlt"
       :aria="icon.iconAria"
+      :href="icon.href"
       :icon-image="icon.iconImage"
       :icon-name="icon.iconName"
       :label="icon.iconLabel"
@@ -25,9 +26,28 @@ export default {
     iconData: {
       type: Array,
       required: true
+    },
+    modifier: {
+      type: String,
+      default: 'horizontal',
+      validator(value) {
+        return ['horizontal', 'vertical'].indexOf(value) !== -1;
+      }
+    }
+  },
+  computed: {
+    classes() {
+      const classes = ['m-icon-list'];
+
+      let extraClass = classes[0] + '--' + this.modifier;
+      classes.push(extraClass);
+
+      return classes;
     }
   }
 };
 </script>
 
-<style lang="scss"></style>
+<style lang="scss">
+@import './index.scss';
+</style>
