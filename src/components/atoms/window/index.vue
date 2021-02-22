@@ -26,13 +26,7 @@
       </div>
     </div>
     <!-- menu -->
-    <div class="a-window__menu-bar">
-      <span>File</span>
-      <span>Home</span>
-      <span>Share</span>
-      <span>View</span>
-      <span>Manage</span>
-    </div>
+    <MenuBar />
     <!-- window content -->
     <div :class="contentClass">
       <slot>default window content</slot>
@@ -42,8 +36,14 @@
 
 <script>
 import '~atoms/fontAwesomeIcons';
+import { isMobileDevice } from '~helpers/deviceHelpers.js';
+import MenuBar from './menuBar';
+
 export default {
   name: 'Window',
+  components: {
+    MenuBar
+  },
   props: {
     aria: {
       type: String,
@@ -79,6 +79,7 @@ export default {
       startY: 0,
       top: undefined,
       left: undefined,
+      isMobileDevice: undefined,
       isOpen: false
     };
   },
@@ -93,19 +94,36 @@ export default {
     },
     windowStyle() {
       let style = { top: this.top, left: this.left };
+
       if (this.size) {
-        style.height = this.size.height;
-        style.width = this.size.width;
+        if (this.isMobileDevice) {
+          style.height = this.size.mobile.height;
+          style.width = this.size.mobile.width;
+        } else {
+          style.height = this.size.desktop.height;
+          style.width = this.size.desktop.width;
+        }
       }
       return style;
     }
   },
   created() {
+    window.addEventListener('resize', this.handleResize);
+    this.handleResize();
     // set initial window position
-    this.top = this.initialPosition.top;
-    this.left = this.initialPosition.left;
+    this.isMobileDevice = isMobileDevice();
+    if (this.isMobileDevice) {
+      this.top = this.initialPosition.mobile.top;
+      this.left = this.initialPosition.mobile.left;
+    } else {
+      this.top = this.initialPosition.desktop.top;
+      this.left = this.initialPosition.desktop.left;
+    }
 
     this.checkWindowStatus();
+  },
+  destroyed() {
+    window.removeEventListener('resize', this.handleResize);
   },
   watch: {
     $route() {
@@ -119,6 +137,9 @@ export default {
     document.removeEventListener('mouseleave', this.endDrag);
   },
   methods: {
+    handleResize() {
+      this.isMobileDevice = isMobileDevice();
+    },
     beginDrag(e) {
       e.preventDefault();
       // get/set the mouse cursor position at start
@@ -150,8 +171,6 @@ export default {
       }
     },
     closeWindow() {
-      //   this.isOpen = false;
-
       let openWindows = [];
       let windowQuery = this.$route.query.window;
 
@@ -168,8 +187,6 @@ export default {
       });
     },
     drag(e) {
-      //   console.log('e', e);
-      //   console.log('this.name', test);
       e.preventDefault();
 
       // calculate the new cursor position

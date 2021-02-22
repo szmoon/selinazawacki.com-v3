@@ -1,7 +1,7 @@
 <template>
   <Window
     aria="selina.png"
-    :initialPosition="{ top: 80, left: 500 }"
+    :initialPosition="initialPosition"
     name="aboutImg"
     modifier="image"
     title="selina.png"
@@ -21,7 +21,15 @@ export default {
   },
   data() {
     return {
-      selinaImg
+      selinaImg,
+      initialPosition: {
+        mobile: { top: '150px', left: '150px' },
+        desktop: { top: '80px', left: '500px' }
+      },
+      windowSize: {
+        mobile: { width: '220px', height: '220px' },
+        desktop: { width: '500px', height: '400px' }
+      }
     };
   }
 };

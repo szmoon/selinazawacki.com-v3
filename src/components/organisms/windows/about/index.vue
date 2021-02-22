@@ -14,6 +14,7 @@
 import IconList from '~molecules/iconList';
 import Window from '~atoms/window';
 import aboutIconData from './icons.json';
+// import { isMobileDevice } from '~helpers/deviceHelpers.js';
 
 export default {
   name: 'About',
@@ -23,23 +24,18 @@ export default {
   },
   data() {
     return {
-      aboutIconData
+      aboutIconData,
+      initialPosition: {
+        mobile: { top: '50px', left: '50px' },
+        desktop: { top: '100px', left: '200px' }
+      },
+      windowSize: {
+        mobile: { width: '220px', height: '220px' },
+        desktop: { width: '400px', height: '350px' }
+      }
     };
   },
-  computed: {
-    initialPosition() {
-      return { top: '10%', left: '10%' };
-    },
-    windowSize() {
-      // turn these into devices helpers
-      //   console.log('this.window.width', window.innerWidth);
-      let width = window.innerWidth;
-      if (width <= 767) {
-        return { width: '300px', height: '300px' };
-      }
-      return { width: '500px', height: '400px' };
-    }
-  }
+  computed: {}
 };
 </script>
 

@@ -1,0 +1,62 @@
+// adapted from https://codepen.io/ArtemGordinsky/pen/GnLBq
+
+.blinking-cursor {
+  font-weight: 100;
+  font-size: 20px;
+  color: #4a4a4a;
+  -webkit-animation: 2s blink step-end infinite;
+  -moz-animation: 2s blink step-end infinite;
+  -ms-animation: 2s blink step-end infinite;
+  -o-animation: 2s blink step-end infinite;
+  animation: 2s blink step-end infinite;
+}
+
+@keyframes blink {
+  from,
+  to {
+    color: transparent;
+  }
+  50% {
+    color: black;
+  }
+}
+
+@-moz-keyframes blink {
+  from,
+  to {
+    color: transparent;
+  }
+  50% {
+    color: black;
+  }
+}
+
+@-webkit-keyframes blink {
+  from,
+  to {
+    color: transparent;
+  }
+  50% {
+    color: black;
+  }
+}
+
+@-ms-keyframes blink {
+  from,
+  to {
+    color: transparent;
+  }
+  50% {
+    color: black;
+  }
+}
+
+@-o-keyframes blink {
+  from,
+  to {
+    color: transparent;
+  }
+  50% {
+    color: black;
+  }
+}

@@ -1,0 +1,22 @@
+@import '~styles/base';
+
+.a-window__menu-bar {
+  display: flex;
+  align-items: center;
+  padding-left: 10px;
+  height: 30px;
+  background-color: rgb(207, 207, 207);
+  span {
+    margin-right: 10px;
+    font-weight: 500;
+    font-size: 15px;
+    @include no-highlight;
+  }
+
+  @include breakpoint('xsmall') {
+    height: 25px;
+    span {
+      font-size: 11px;
+    }
+  }
+}

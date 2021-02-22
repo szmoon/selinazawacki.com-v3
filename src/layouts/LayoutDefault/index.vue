@@ -5,6 +5,7 @@
       <IconList :icon-data="iconData" modifier="vertical" />
       <AboutWindow />
       <AboutImgWindow />
+      <AboutTxtWindow />
       <NetworkWindow />
     </div>
     <Taskbar />
@@ -14,6 +15,7 @@
 <script>
 import AboutWindow from '~organisms/windows/about';
 import AboutImgWindow from '~organisms/windows/aboutImg';
+import AboutTxtWindow from '~organisms/windows/aboutTxt';
 import NetworkWindow from '~organisms/windows/network';
 import IconList from '~molecules/iconList';
 import Taskbar from '~globals/taskbar';
@@ -24,6 +26,7 @@ export default {
   components: {
     AboutImgWindow,
     AboutWindow,
+    AboutTxtWindow,
     IconList,
     NetworkWindow,
     Taskbar

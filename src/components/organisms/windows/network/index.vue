@@ -1,9 +1,9 @@
 <template>
   <Window
     aria="Network links window"
-    :initialPosition="{ top: 150, left: 300 }"
+    :initialPosition="initialPosition"
     name="network"
-    :size="{ width: '400px', height: '350px' }"
+    :size="windowSize"
     title="network"
   >
     <IconList :icon-data="networkIconData" />
@@ -23,7 +23,15 @@ export default {
   },
   data() {
     return {
-      networkIconData
+      networkIconData,
+      initialPosition: {
+        mobile: { top: '150px', left: '150px' },
+        desktop: { top: '150px', left: '300px' }
+      },
+      windowSize: {
+        mobile: { width: '220px', height: '220px' },
+        desktop: { width: '400px', height: '350px' }
+      }
     };
   }
 };

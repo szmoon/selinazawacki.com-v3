@@ -10,6 +10,7 @@ module.exports = {
         '~components': path.resolve('src/components'),
         '~data': path.resolve('src/data'),
         '~globals': path.resolve('src/components/globals'),
+        '~helpers': path.resolve('src/helpers'),
         '~layouts': path.resolve('src/layouts'),
         '~molecules': path.resolve('src/components/molecules'),
         '~organisms': path.resolve('src/components/organisms'),
