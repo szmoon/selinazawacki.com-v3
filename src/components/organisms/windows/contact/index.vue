@@ -24,12 +24,12 @@ export default {
   data() {
     return {
       initialPosition: {
-        mobile: { top: '450px', left: '150px' },
-        desktop: { top: '450px', left: '200px' }
+        mobile: { top: '400px', left: '120px' },
+        desktop: { top: '65%', left: '50%' }
       },
       windowSize: {
-        mobile: { width: '220px', height: '220px' },
-        desktop: { width: '390px', height: '230px' }
+        mobile: { width: '220px', height: '160px' },
+        desktop: { width: '370px', height: '200px' }
       }
     };
   }

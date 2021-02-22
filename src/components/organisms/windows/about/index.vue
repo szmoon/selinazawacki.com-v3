@@ -27,7 +27,7 @@ export default {
       aboutIconData,
       initialPosition: {
         mobile: { top: '50px', left: '50px' },
-        desktop: { top: '100px', left: '200px' }
+        desktop: { top: '8%', left: '20%' }
       },
       windowSize: {
         mobile: { width: '220px', height: '220px' },

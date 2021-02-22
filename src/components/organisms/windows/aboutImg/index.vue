@@ -24,7 +24,7 @@ export default {
       selinaImg,
       initialPosition: {
         mobile: { top: '150px', left: '150px' },
-        desktop: { top: '80px', left: '500px' }
+        desktop: { top: '15%', left: '40%' }
       },
       windowSize: {
         mobile: { width: '220px', height: '220px' },

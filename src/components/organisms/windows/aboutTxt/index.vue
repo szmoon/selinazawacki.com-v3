@@ -7,14 +7,19 @@
     modifier="text"
     title="about.txt"
   >
-    Full-stack software engineer specialized in creating Node.js and Python
-    APIs, and experienced with cloud services, Vue.js and React. Also
-    experienced in circuit design and the Arduino language. Love teaching and
-    always looking for opportunities to do outreach to get young women,
-    minorities and low income students interested in technology.<span
-      class="blinking-cursor"
-      >|</span
-    >
+    <u>Selina Chang-Yi Zawacki:</u> Analog Girl in a Digital World
+    <div>
+      Software engineer with a fine arts degree, and an interest in exploring
+      arts and culture through a digital lense.
+    </div>
+    <div>
+      Currently working as an engineer at the J. Paul Getty Trust on the
+      Research Application Development (RAD) Team, with a strong interest in
+      promoting diversity, equity and inclusion in all aspects of her work.<span
+        class="blinking-cursor"
+        >|</span
+      >
+    </div>
   </Window>
 </template>
 
@@ -30,11 +35,11 @@ export default {
     return {
       initialPosition: {
         mobile: { top: '150px', left: '150px' },
-        desktop: { top: '80px', left: '500px' }
+        desktop: { top: '40%', left: '10%' }
       },
       windowSize: {
-        mobile: { width: '220px', height: '220px' },
-        desktop: { width: '500px', height: '400px' }
+        mobile: { width: '280px', height: '280px' },
+        desktop: { width: '400px', height: '400px' }
       }
     };
   }

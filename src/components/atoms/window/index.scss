@@ -69,11 +69,20 @@
 
 .a-window__content--text {
   text-align: left;
+  font-size: 15px;
   font-family: 'Lucida Console', 'Courier New', monospace;
   line-height: 20px;
-  padding: 10px;
+  padding: 8px 10px;
+  div {
+    margin-top: 12px;
+  }
+  @include breakpoint('xsmall') {
+    padding: 5px;
+    font-size: 13px;
+    overflow: auto;
 
-  .p {
-    // margin-top: 10px;
+    div {
+      margin-top: 8px;
+    }
   }
 }

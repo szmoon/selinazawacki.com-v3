@@ -2,8 +2,8 @@
   <div
     :aria-label="aria"
     class="a-icon"
-    @dblclick="doubleClickIcon"
-    v-touch="doubleClickIcon"
+    @dblclick="clickIcon"
+    v-touch="touchIcon"
   >
     <div :class="iconClass">
       <img :src="imgSrc" :alt="alt" />
@@ -68,7 +68,7 @@ export default {
     }
   },
   methods: {
-    doubleClickIcon() {
+    clickIcon() {
       if (this.href) {
         window.open(this.href, '_blank');
         return;
@@ -88,6 +88,12 @@ export default {
         this.$router.push({
           query: { window: openWindows }
         });
+      }
+    },
+    touchIcon(e) {
+      if (e.changedTouches) {
+        console.log('booo');
+        this.clickIcon();
       }
     }
   }
