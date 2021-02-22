@@ -6,6 +6,7 @@
       <AboutWindow />
       <AboutImgWindow />
       <AboutTxtWindow />
+      <ContactWindow />
       <NetworkWindow />
     </div>
     <Taskbar />
@@ -16,6 +17,8 @@
 import AboutWindow from '~organisms/windows/about';
 import AboutImgWindow from '~organisms/windows/aboutImg';
 import AboutTxtWindow from '~organisms/windows/aboutTxt';
+import ContactWindow from '~organisms/windows/contact';
+
 import NetworkWindow from '~organisms/windows/network';
 import IconList from '~molecules/iconList';
 import Taskbar from '~globals/taskbar';
@@ -27,6 +30,7 @@ export default {
     AboutImgWindow,
     AboutWindow,
     AboutTxtWindow,
+    ContactWindow,
     IconList,
     NetworkWindow,
     Taskbar
