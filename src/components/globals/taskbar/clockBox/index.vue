@@ -18,14 +18,21 @@ export default {
   name: 'ClockBox',
   data() {
     return {
-      currentTime: undefined
+      currentTime: '',
+      timer: undefined
     };
   },
   created() {
+    let self = this;
+
     this.currentTime = format(new Date(), 'h:mm a');
-    setInterval(function() {
-      this.currentTime = format(new Date(), 'h:mm a');
+
+    this.timer = setInterval(function() {
+      self.currentTime = format(new Date(), 'h:mm a');
     }, 30000);
+  },
+  beforeDestroy() {
+    clearInterval(this.timer);
   }
 };
 </script>

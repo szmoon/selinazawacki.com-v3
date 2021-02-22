@@ -142,9 +142,9 @@ export default {
   },
   methods: {
     updateZIndex() {
+      console.log('!', this.zIndex);
       this.zIndex = this.$store.state.currentZIndex;
       this.$store.commit('incrementZIndex');
-      console.log('update z', this.$store.state.currentZIndex);
     },
     handleResize() {
       this.isMobileDevice = isMobileDevice();
@@ -169,12 +169,14 @@ export default {
       if (Array.isArray(query.window)) {
         if (query.window.includes(this.name)) {
           this.isOpen = true;
+          this.updateZIndex();
         } else {
           this.isOpen = false;
         }
       } else {
         if (query.window == this.name) {
           this.isOpen = true;
+          this.updateZIndex();
         } else {
           this.isOpen = false;
         }

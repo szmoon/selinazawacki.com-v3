@@ -92,7 +92,6 @@ export default {
     },
     touchIcon(e) {
       if (e.changedTouches) {
-        console.log('booo');
         this.clickIcon();
       }
     }

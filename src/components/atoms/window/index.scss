@@ -4,7 +4,7 @@
   touch-action: none;
   position: fixed;
   border-radius: 15px 15px 5px 5px;
-  border: 4px solid rgb(124, 190, 235);
+  border: 4px solid $blue--50;
   background-color: rgb(248, 248, 248);
   box-shadow: rgb(136, 136, 136) 0px 0px 15px;
   display: flex;
@@ -20,7 +20,7 @@
   height: 27px;
   border-radius: 7px;
   border: 1px solid rgb(255, 255, 255);
-  background-color: $pink;
+  background-color: $pink--50;
   cursor: default;
   @include breakpoint('xsmall') {
     width: 21px;
@@ -32,7 +32,7 @@
   position: relative;
   top: 0px;
   height: 35px;
-  background-color: rgb(124, 190, 235);
+  background-color: $blue--50;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -63,11 +63,12 @@
 }
 
 .a-window__content--image {
-  border: 2px solid rgb(128, 160, 193);
+  border: 1px solid $blue--70;
   display: flex;
 }
 
 .a-window__content--text {
+  color: $black;
   text-align: left;
   font-size: 15px;
   font-family: 'Lucida Console', 'Courier New', monospace;
