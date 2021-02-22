@@ -6,6 +6,7 @@
     ref="window"
     :aria-label="aria"
     :style="windowStyle"
+    @mousedown="updateZIndex"
   >
     <!-- top bar -->
     <div
@@ -80,7 +81,8 @@ export default {
       top: undefined,
       left: undefined,
       isMobileDevice: undefined,
-      isOpen: false
+      isOpen: false,
+      zIndex: 1
     };
   },
   computed: {
@@ -93,7 +95,7 @@ export default {
       return classes;
     },
     windowStyle() {
-      let style = { top: this.top, left: this.left };
+      let style = { top: this.top, left: this.left, zIndex: this.zIndex };
 
       if (this.size) {
         if (this.isMobileDevice) {
@@ -108,6 +110,8 @@ export default {
     }
   },
   created() {
+    this.updateZIndex();
+
     window.addEventListener('resize', this.handleResize);
     this.handleResize();
     // set initial window position
@@ -137,10 +141,16 @@ export default {
     document.removeEventListener('mouseleave', this.endDrag);
   },
   methods: {
+    updateZIndex() {
+      this.zIndex = this.$store.state.currentZIndex;
+      this.$store.commit('incrementZIndex');
+      console.log('update z', this.$store.state.currentZIndex);
+    },
     handleResize() {
       this.isMobileDevice = isMobileDevice();
     },
     beginDrag(e) {
+      //   this.updateZIndex();
       e.preventDefault();
       // get/set the mouse cursor position at start
       this.startX = e.clientX;
