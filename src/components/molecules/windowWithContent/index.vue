@@ -9,7 +9,7 @@
   >
     <IconList v-if="data.icons" :icon-data="data.icons" />
     <img v-else-if="imgSrc" :src="imgSrc" :alt="data.contentImageAlt" />
-    <span v-else-if="data.contentText" v-html="data.contentText"></span>
+    <span v-else-if="text" v-html="text" />
   </Window>
 </template>
 
@@ -31,11 +31,13 @@ export default {
   },
   computed: {
     imgSrc() {
-      if (!this.data.contentImage) {
-        return undefined;
-      }
+      if (!this.data.contentImage) return;
       const images = require.context('images', false, /\.png$/);
       return images('./' + this.data.contentImage);
+    },
+    text() {
+      if (!this.data.contentText) return;
+      return this.data.contentText + '<span class="blinking-cursor">|</span>';
     }
   }
 };
