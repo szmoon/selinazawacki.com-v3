@@ -8,7 +8,6 @@
     :style="windowStyle"
     @mousedown="addWindow"
   >
-    <!-- @mousedown="updateZIndex" -->
     <!-- top bar -->
     <div
       class="a-window__top-bar"
@@ -76,11 +75,11 @@ export default {
       top: undefined,
       left: undefined,
       isMobileDevice: undefined,
-      isOpen: false,
-      zIndex: 1
+      isOpen: false
     };
   },
   computed: {
+    // class for window content based on content type (image, text, icons)
     contentClass() {
       const classes = ['a-window__content'];
 
@@ -89,8 +88,9 @@ export default {
 
       return classes;
     },
+    // variable styles for a-window
     windowStyle() {
-      let style = { top: this.top, left: this.left, zIndex: this.testIndex };
+      let style = { top: this.top, left: this.left, zIndex: this.zIndex };
 
       if (this.size) {
         if (this.isMobileDevice) {
@@ -103,18 +103,15 @@ export default {
       }
       return style;
     },
-    testIndex() {
-      console.log(
-        'index',
-        this.name,
-        this.$store.getters.getWindowIndex(this.name)
-      );
+    // zindex based on window position in store
+    zIndex() {
       return this.$store.getters.getWindowIndex(this.name);
     }
   },
   created() {
     window.addEventListener('resize', this.handleResize);
     this.handleResize();
+
     // set initial window position
     this.isMobileDevice = isMobileDevice();
     if (this.isMobileDevice) {
@@ -144,9 +141,6 @@ export default {
   methods: {
     addWindow() {
       this.$store.commit('addWindow', this.name);
-    },
-    handleResize() {
-      this.isMobileDevice = isMobileDevice();
     },
     beginDrag(e) {
       //   this.updateZIndex();
@@ -217,6 +211,9 @@ export default {
     endDrag() {
       // remove event listener for mousemove
       document.removeEventListener('mousemove', this.drag);
+    },
+    handleResize() {
+      this.isMobileDevice = isMobileDevice();
     },
     touchBeginDrag(e) {
       if (!e.changedTouches) return;
