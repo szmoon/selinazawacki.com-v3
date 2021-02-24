@@ -50,6 +50,9 @@
 .a-window__content--image {
   border: 1px solid $blue--70;
   display: flex;
+  img {
+    width: 100%;
+  }
 }
 
 .a-window__content--text {

@@ -1,7 +1,8 @@
 <template>
   <Window
     aria="selina.png"
-    :initialPosition="initialPosition"
+    :initial-position="initialPosition"
+    :size="windowSize"
     name="aboutImg"
     modifier="image"
     title="selina.png"
@@ -27,8 +28,8 @@ export default {
         desktop: { top: '15%', left: '40%' }
       },
       windowSize: {
-        mobile: { width: '220px', height: '220px' },
-        desktop: { width: '500px', height: '400px' }
+        mobile: { width: '250px' },
+        desktop: { width: '400px' }
       }
     };
   }

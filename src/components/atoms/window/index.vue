@@ -91,16 +91,29 @@ export default {
     // variable styles for a-window
     windowStyle() {
       let style = { top: this.top, left: this.left, zIndex: this.zIndex };
-
       if (this.size) {
+        let size;
+
         if (this.isMobileDevice) {
-          style.height = this.size.mobile.height;
-          style.width = this.size.mobile.width;
+          size = this.size.mobile;
+          console.log('size', size);
+          //   style.height = this.size.mobile.height;
+          //   style.width = this.size.mobile.width;
         } else {
-          style.height = this.size.desktop.height;
-          style.width = this.size.desktop.width;
+          size = this.size.desktop;
+
+          //   style.height = this.size.desktop.height;
+          //   style.width = this.size.desktop.width;
+        }
+        if (size.height) {
+          console.log('size.height', size.height);
+          style.height = size.height;
+        }
+        if (size.width) {
+          style.width = size.width;
         }
       }
+
       return style;
     },
     // zindex based on window position in store
