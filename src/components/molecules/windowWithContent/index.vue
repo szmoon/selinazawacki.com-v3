@@ -7,16 +7,20 @@
     :modifier="data.modifier"
     :title="data.title"
   >
-    <img v-if="imgSrc" :src="imgSrc" :alt="data.contentImageAlt" />
+    <IconList v-if="data.icons" :icon-data="data.icons" />
+    <img v-else-if="imgSrc" :src="imgSrc" :alt="data.contentImageAlt" />
+    <span v-else-if="data.contentText" v-html="data.contentText"></span>
   </Window>
 </template>
 
 <script>
+import IconList from '~molecules/iconList';
 import Window from '~atoms/window';
 
 export default {
   name: 'WindowWithContent',
   components: {
+    IconList,
     Window
   },
   props: {

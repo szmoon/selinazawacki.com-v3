@@ -23,6 +23,22 @@ export default {
   },
   data() {
     return {
+      data: {
+        aria: 'Contact.txt Window',
+        initialPosition: {
+          mobile: { top: '400px', left: '120px' },
+          desktop: { top: '65%', left: '50%' }
+        },
+        size: {
+          mobile: { width: '220px', height: '160px' },
+          desktop: { width: '370px', height: '200px' }
+        },
+        name: 'contact',
+        modified: 'text',
+        text:
+          "You can reach me at<br />szmoon [at] gmail [dot] com<span class='blinking-cursor'>|</span>",
+        title: 'contact.txt!'
+      },
       initialPosition: {
         mobile: { top: '400px', left: '120px' },
         desktop: { top: '65%', left: '50%' }

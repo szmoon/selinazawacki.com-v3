@@ -24,6 +24,35 @@ export default {
   },
   data() {
     return {
+      data: {
+        aria: 'About window',
+        icons: [
+          {
+            iconImage: 'selina',
+            iconAlt: 'Photo of Selina',
+            iconAria: 'Open selina.png window',
+            iconLabel: 'selina.png',
+            windowName: 'aboutImg'
+          },
+          {
+            iconName: 'txt',
+            iconAlt: 'Notepad icon',
+            iconAria: 'Open about.txt window',
+            iconLabel: 'about.txt',
+            windowName: 'aboutTxt'
+          }
+        ],
+        initialPosition: {
+          mobile: { top: '50px', left: '50px' },
+          desktop: { top: '8%', left: '20%' }
+        },
+        name: 'about',
+        size: {
+          mobile: { width: '220px', height: '220px' },
+          desktop: { width: '400px', height: '350px' }
+        },
+        title: 'about!'
+      },
       aboutIconData,
       initialPosition: {
         mobile: { top: '50px', left: '50px' },
