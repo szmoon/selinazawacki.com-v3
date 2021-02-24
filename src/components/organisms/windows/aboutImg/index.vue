@@ -1,18 +1,17 @@
 <template>
   <Window
-    aria="selina.png"
-    :initial-position="initialPosition"
-    :size="windowSize"
-    name="aboutImg"
-    modifier="image"
-    title="selina.png"
+    :aria="window.aria"
+    :initial-position="window.initialPosition"
+    :size="window.size"
+    :name="window.name"
+    :modifier="window.modifier"
+    :title="window.title"
   >
-    <img :src="selinaImg" />
+    <img v-if="imgSrc" :src="imgSrc" :alt="window.contentImageAlt" />
   </Window>
 </template>
 
 <script>
-import selinaImg from 'images/selina.png';
 import Window from '~atoms/window';
 
 export default {
@@ -22,16 +21,32 @@ export default {
   },
   data() {
     return {
-      selinaImg,
-      initialPosition: {
-        mobile: { top: '150px', left: '150px' },
-        desktop: { top: '15%', left: '40%' }
-      },
-      windowSize: {
-        mobile: { width: '250px' },
-        desktop: { width: '400px' }
+      window: {
+        aria: 'selina.png',
+        initialPosition: {
+          mobile: { top: '150px', left: '150px' },
+          desktop: { top: '15%', left: '40%' }
+        },
+        contentImage: 'selina.png',
+        contentImageAlt: 'selina sitting next to a vintage terminal',
+        name: 'aboutImg',
+        modifier: 'image',
+        size: {
+          mobile: { width: '250px' },
+          desktop: { width: '400px' }
+        },
+        title: 'selina.png'
       }
     };
+  },
+  computed: {
+    imgSrc() {
+      if (!this.window.contentImage) {
+        return undefined;
+      }
+      const images = require.context('images', false, /\.png$/);
+      return images('./' + this.window.contentImage);
+    }
   }
 };
 </script>

@@ -1,0 +1,18 @@
+[
+  {
+    "aria": "selina.png",
+    "initialPosition": {
+      "mobile": { "top": "150px", "left": "150px" },
+      "desktop": { "top": "15%", "left": "40%" }
+    },
+    "contentImage": "selina.png",
+    "contentImageAlt": "selina sitting next to a vintage terminal",
+    "name": "aboutImg",
+    "modifier": "image",
+    "size": {
+      "mobile": { "width": "250px" },
+      "desktop": { "width": "400px" }
+    },
+    "title": "selina.png"
+  }
+]
