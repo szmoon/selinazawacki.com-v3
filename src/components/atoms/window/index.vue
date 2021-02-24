@@ -6,8 +6,9 @@
     ref="window"
     :aria-label="aria"
     :style="windowStyle"
-    @mousedown="updateZIndex"
+    @mousedown="addWindow"
   >
+    <!-- @mousedown="updateZIndex" -->
     <!-- top bar -->
     <div
       class="a-window__top-bar"
@@ -89,7 +90,7 @@ export default {
       return classes;
     },
     windowStyle() {
-      let style = { top: this.top, left: this.left, zIndex: this.zIndex };
+      let style = { top: this.top, left: this.left, zIndex: this.testIndex };
 
       if (this.size) {
         if (this.isMobileDevice) {
@@ -101,11 +102,17 @@ export default {
         }
       }
       return style;
+    },
+    testIndex() {
+      console.log(
+        'index',
+        this.name,
+        this.$store.getters.getWindowIndex(this.name)
+      );
+      return this.$store.getters.getWindowIndex(this.name);
     }
   },
   created() {
-    this.updateZIndex();
-
     window.addEventListener('resize', this.handleResize);
     this.handleResize();
     // set initial window position
@@ -135,10 +142,8 @@ export default {
     document.removeEventListener('mouseleave', this.endDrag);
   },
   methods: {
-    updateZIndex() {
-      console.log('!', this.zIndex);
-      this.zIndex = this.$store.state.currentZIndex;
-      this.$store.commit('incrementZIndex');
+    addWindow() {
+      this.$store.commit('addWindow', this.name);
     },
     handleResize() {
       this.isMobileDevice = isMobileDevice();
@@ -160,20 +165,18 @@ export default {
         this.isOpen = false;
       }
 
-      if (Array.isArray(query.window)) {
-        if (query.window.includes(this.name)) {
+      let windowQuery = query.window;
+      if (!Array.isArray(windowQuery)) {
+        windowQuery = [windowQuery];
+      }
+      // this.isOpen == true &&
+      if (windowQuery.includes(this.name)) {
+        if (this.isOpen == false) {
           this.isOpen = true;
-          this.updateZIndex();
-        } else {
-          this.isOpen = false;
+          this.addWindow();
         }
       } else {
-        if (query.window == this.name) {
-          this.isOpen = true;
-          this.updateZIndex();
-        } else {
-          this.isOpen = false;
-        }
+        this.isOpen = false;
       }
     },
     closeWindow() {
@@ -191,6 +194,9 @@ export default {
       this.$router.push({
         query: { window: newWindows }
       });
+
+      // remove window from windowOrder
+      this.$store.commit('removeWindow', this.name);
     },
     drag(e) {
       e.preventDefault();
