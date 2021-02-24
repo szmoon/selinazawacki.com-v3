@@ -1,5 +1,6 @@
 [
   {
+    "name": "about",
     "aria": "About window",
     "icons": [
       {
@@ -18,10 +19,9 @@
       }
     ],
     "initialPosition": {
-      "mobile": { "top": "50px", "left": "50px" },
-      "desktop": { "top": "8%", "left": "20%" }
+      "mobile": { "top": "50px", "left": "40px" },
+      "desktop": { "top": "7%", "left": "20%" }
     },
-    "name": "about",
     "size": {
       "mobile": { "width": "220px", "height": "220px" },
       "desktop": { "width": "400px", "height": "350px" }
@@ -29,37 +29,38 @@
     "title": "about!"
   },
   {
+    "name": "aboutTxt",
     "aria": "About text Window",
     "contentText": "<u>Selina Chang-Yi Zawacki:</u> Analog Girl in a Digital World<div>Software engineer with a fine arts degree, and an interest in exploring arts and culture through a digital lense.</div><div>Currently working as an engineer at the J. Paul Getty Trust on the Research Application Development (RAD) Team, with a strong interest in promoting diversity, equity and inclusion in all aspects of her work.",
     "initialPosition": {
-      "mobile": { "top": "150px", "left": "150px" },
-      "desktop": { "top": "40%", "left": "10%" }
+      "mobile": { "top": "250px", "left": "80px" },
+      "desktop": { "top": "37%", "left": "10%" }
     },
     "size": {
       "mobile": { "width": "280px", "height": "280px" },
       "desktop": { "width": "400px", "height": "400px" }
     },
-    "name": "aboutTxt",
     "modifier": "text",
     "title": "about.txt"
   },
   {
+    "name": "aboutImg",
     "aria": "selina.png",
     "initialPosition": {
-      "mobile": { "top": "150px", "left": "150px" },
-      "desktop": { "top": "15%", "left": "40%" }
+      "mobile": { "top": "150px", "left": "160px" },
+      "desktop": { "top": "15%", "left": "43%" }
     },
     "contentImage": "selina.png",
     "contentImageAlt": "selina sitting next to a vintage terminal",
-    "name": "aboutImg",
     "modifier": "image",
     "size": {
-      "mobile": { "width": "250px" },
+      "mobile": { "width": "220px" },
       "desktop": { "width": "400px" }
     },
     "title": "selina.png"
   },
   {
+    "name": "network",
     "aria": "Network links window",
     "icons": [
       {
@@ -85,27 +86,26 @@
       }
     ],
     "initialPosition": {
-      "mobile": { "top": "150px", "left": "150px" },
-      "desktop": { "top": "150px", "left": "300px" }
+      "mobile": { "top": "290px", "left": "50px" },
+      "desktop": { "top": "25%", "left": "300px" }
     },
-    "name": "network",
     "size": {
-      "mobile": { "width": "220px", "height": "220px" },
-      "desktop": { "width": "400px", "height": "350px" }
+      "mobile": { "width": "220px", "height": "210px" },
+      "desktop": { "width": "390px", "height": "330px" }
     },
     "title": "network"
   },
   {
+    "name": "contact",
     "aria": "Contact.txt Window",
     "initialPosition": {
-      "mobile": { "top": "400px", "left": "120px" },
-      "desktop": { "top": "65%", "left": "50%" }
+      "mobile": { "top": "410px", "left": "120px" },
+      "desktop": { "top": "63%", "left": "50%" }
     },
     "size": {
       "mobile": { "width": "220px", "height": "160px" },
       "desktop": { "width": "370px", "height": "200px" }
     },
-    "name": "contact",
     "modifier": "text",
     "contentText": "You can reach me at<br />szmoon [at] gmail [dot] com",
     "title": "contact.txt!"
