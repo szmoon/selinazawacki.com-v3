@@ -1,0 +1,19 @@
+@import '~styles/base';
+
+.a-window__close-button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 27px;
+  height: 27px;
+  border-radius: 7px;
+  border: 1px solid rgb(255, 255, 255);
+  background-color: $pink--50;
+  -webkit-box-shadow: inset 10px 15px 23px -13px rgba(255, 255, 255, 0.36);
+  box-shadow: inset 10px 15px 23px -13px rgba(255, 255, 255, 0.36);
+  cursor: default;
+  @include breakpoint('xsmall') {
+    width: 21px;
+    height: 21px;
+  }
+}

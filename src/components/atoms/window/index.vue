@@ -17,16 +17,8 @@
       v-touch:moving="touchDrag"
     >
       {{ title }}
-      <!-- close button -->
-      <div
-        class="a-window__close-button"
-        aria-label="close button"
-        @click="closeWindow"
-      >
-        <font-awesome-icon icon="times" color="white" />
-      </div>
+      <CloseButton @closeWindow="closeWindow" />
     </div>
-    <!-- menu -->
     <MenuBar />
     <!-- window content -->
     <div :class="contentClass">
@@ -38,11 +30,13 @@
 <script>
 import '~atoms/fontAwesomeIcons';
 import { isMobileDevice } from '~helpers/deviceHelpers.js';
+import CloseButton from './closeButton';
 import MenuBar from './menuBar';
 
 export default {
   name: 'Window',
   components: {
+    CloseButton,
     MenuBar
   },
   props: {

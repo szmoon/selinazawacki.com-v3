@@ -9,7 +9,6 @@
 </template>
 
 <script>
-import '~atoms/fontAwesomeIcons';
 export default {
   name: 'MenuBar'
 };

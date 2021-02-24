@@ -9,12 +9,39 @@
   height: 100%;
   border-top-right-radius: 13px;
   border-bottom-right-radius: 13px;
-  background-color: $green--50;
-  box-shadow: 0px 0px 15px #888888;
   font-size: 28px;
   font-weight: bold;
   color: #ebebeb;
   @include breakpoint('xsmall') {
     width: 120px;
   }
+
+  //   box-shadow: 0px 0px 15px $grey--60;
+  -webkit-box-shadow: 12px 0px 23px -11px $grey--60;
+  box-shadow: 12px 0px 23px -11px $grey--60;
+  //   -webkit-box-shadow: inset 0px 0px 23px 0px $green--30;
+  //   box-shadow: inset 0px 0px 23px 0px $green--30;
+
+  /* Permalink - use to edit and share this gradient: https://colorzilla.com/gradient-editor/#60eb71+0,56d164+50,60eb71+100 */
+  background-color: $green--50;
+  background: $green--50; /* Old browsers */
+  background: -moz-linear-gradient(
+    top,
+    $green--30 0%,
+    $green--50 50%,
+    $green--30 100%
+  ); /* FF3.6-15 */
+  background: -webkit-linear-gradient(
+    top,
+    $green--30 0%,
+    $green--50 50%,
+    $green--30 100%
+  ); /* Chrome10-25,Safari5.1-6 */
+  background: linear-gradient(
+    to bottom,
+    $green--30 0%,
+    $green--50 50%,
+    $green--30 100%
+  ); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#60eb71', endColorstr='#60eb71',GradientType=0 ); /* IE6-9 */
 }

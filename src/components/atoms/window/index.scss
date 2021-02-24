@@ -9,23 +9,6 @@
   box-shadow: rgb(136, 136, 136) 0px 0px 15px;
   display: flex;
   flex-flow: column nowrap;
-  z-index: 4;
-}
-
-.a-window__close-button {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  width: 27px;
-  height: 27px;
-  border-radius: 7px;
-  border: 1px solid rgb(255, 255, 255);
-  background-color: $pink--50;
-  cursor: default;
-  @include breakpoint('xsmall') {
-    width: 21px;
-    height: 21px;
-  }
 }
 
 .a-window__top-bar {
@@ -51,7 +34,11 @@
 }
 
 .a-window__content {
+  //   position: relative;
   //   height: 100%;
+  flex-grow: 3;
+  border: 1px solid $grey--40;
+  border-top: 0;
 }
 
 .a-window__content--icons {

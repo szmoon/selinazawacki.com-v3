@@ -6,6 +6,7 @@
   padding-left: 10px;
   height: 30px;
   background-color: $grey--40;
+
   span {
     margin-right: 10px;
     font-weight: 500;
@@ -19,6 +20,6 @@
       font-size: 11px;
     }
   }
-  -webkit-box-shadow: inset 0px -12px 10px -11px $grey--50;
-  box-shadow: inset 0px -12px 10px -11px $grey--50;
+  //   -webkit-box-shadow: inset 0px -12px 10px -11px $grey--50;
+  //   box-shadow: inset 0px -12px 10px -11px $grey--50;
 }
