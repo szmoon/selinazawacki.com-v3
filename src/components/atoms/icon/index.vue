@@ -92,7 +92,8 @@ export default {
     },
     touchIcon(e) {
       if (e.changedTouches) {
-        this.clickIcon();
+        // timeout safeguard for mobile touch icon vs window
+        setTimeout(this.clickIcon, 0);
       }
     }
   }

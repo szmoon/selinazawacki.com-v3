@@ -5,7 +5,8 @@ Vue.use(Vuex);
 
 export default new Vuex.Store({
   state: {
-    windowOrder: []
+    windowOrder: [],
+    timeSinceLastClick: undefined
   },
   mutations: {
     addWindow(state, windowName) {
