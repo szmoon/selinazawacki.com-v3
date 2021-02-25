@@ -9,8 +9,6 @@
     </div>
     <Taskbar />
   </div>
-  <!-- todo: bug open window on mobile -->
-  <!-- todo: refocus window if already open -->
 </template>
 
 <script>

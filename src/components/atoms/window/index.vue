@@ -169,7 +169,7 @@ export default {
       if (!Array.isArray(windowQuery)) {
         windowQuery = [windowQuery];
       }
-      // this.isOpen == true &&
+
       if (windowQuery.includes(this.name)) {
         if (this.isOpen == false) {
           this.isOpen = true;

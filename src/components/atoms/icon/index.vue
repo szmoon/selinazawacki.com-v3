@@ -83,11 +83,16 @@ export default {
           openWindows = [windowQuery];
         }
       }
+
+      // if window is not yet open, add it to route
       if (!openWindows.includes(this.windowName)) {
         openWindows.push(this.windowName);
         this.$router.push({
           query: { window: openWindows }
         });
+      } else {
+        //   if window is open, refocus and bring to front
+        this.$store.commit('addWindow', this.windowName);
       }
     },
     touchIcon(e) {
