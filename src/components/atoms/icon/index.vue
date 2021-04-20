@@ -87,7 +87,7 @@ export default {
       // if window is not yet open, add it to route
       if (!openWindows.includes(this.windowName)) {
         openWindows.push(this.windowName);
-        this.$router.push({
+        this.$router.replace({
           query: { window: openWindows }
         });
       } else {
@@ -97,8 +97,9 @@ export default {
     },
     touchIcon(e) {
       if (e.changedTouches) {
-        // timeout safeguard for mobile touch icon vs window
-        setTimeout(this.clickIcon, 0);
+        // safeguard for mobile touch icon vs window
+        e.preventDefault();
+        this.clickIcon();
       }
     }
   }

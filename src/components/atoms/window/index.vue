@@ -191,7 +191,7 @@ export default {
 
       let newWindows = openWindows.filter(item => item !== this.name);
 
-      this.$router.push({
+      this.$router.replace({
         query: { window: newWindows }
       });
 

@@ -8,6 +8,9 @@
       </template>
     </div>
     <Taskbar />
+    <!-- base window position off right side? -->
+    <!-- desktop - don't refocus window if close button -->
+    <!-- add middle screen size -->
   </div>
 </template>
 

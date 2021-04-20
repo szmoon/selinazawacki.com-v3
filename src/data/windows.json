@@ -26,7 +26,7 @@
       "mobile": { "width": "220px", "height": "220px" },
       "desktop": { "width": "400px", "height": "350px" }
     },
-    "title": "about!"
+    "title": "about"
   },
   {
     "name": "aboutTxt",
@@ -108,6 +108,6 @@
     },
     "modifier": "text",
     "contentText": "You can reach me at<br />szmoon [at] gmail [dot] com",
-    "title": "contact.txt!"
+    "title": "contact.txt"
   }
 ]
