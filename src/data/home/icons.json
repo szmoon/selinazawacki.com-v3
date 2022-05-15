@@ -26,5 +26,12 @@
     "iconAria": "Open blog in new window",
     "iconLabel": "blog",
     "href": "https://blog.selinazawacki.com/"
+  },
+  {
+    "iconName": "cd",
+    "iconAlt": "Rainbow CD Icon",
+    "iconAria": "Open shop in new window",
+    "iconLabel": "shop",
+    "href": "https://shop.selinazawacki.com/"
   }
 ]
