@@ -1,35 +1,35 @@
 [
   {
     "iconName": "folder-pink",
-    "iconAlt": "Pink Folder Icon",
+    "iconAlt": "Pink Folder Windows XP Icon",
     "iconAria": "Open about window",
     "iconLabel": "about",
     "windowName": "about"
   },
   {
     "iconName": "network",
-    "iconAlt": "Computer Network Icon",
+    "iconAlt": "Computer Network Windows XP Icon",
     "iconAria": "Open network window",
     "iconLabel": "network",
     "windowName": "network"
   },
   {
     "iconName": "txt",
-    "iconAlt": "Notepad Icon",
+    "iconAlt": "Notepad Windows XP Icon",
     "iconAria": "Open contact window",
     "iconLabel": "contact.txt",
     "windowName": "contact"
   },
   {
     "iconName": "computer",
-    "iconAlt": "Computer Icon",
+    "iconAlt": "Computer Windows XP Icon",
     "iconAria": "Open blog in new window",
     "iconLabel": "blog",
     "href": "https://blog.selinazawacki.com/"
   },
   {
     "iconName": "cd",
-    "iconAlt": "Rainbow CD Icon",
+    "iconAlt": "Rainbow CD Windows XP Icon",
     "iconAria": "Open shop in new window",
     "iconLabel": "shop",
     "href": "https://shop.selinazawacki.com/"
