@@ -12,98 +12,78 @@
   </div>
 </template>
 
-<script>
-export default {
-  name: 'Icon',
-  props: {
-    alt: {
-      type: String,
-      required: true
-    },
-    aria: {
-      type: String,
-      required: true
-    },
-    href: {
-      type: String,
-      default: undefined
-    },
-    iconName: {
-      type: String,
-      default: undefined
-    },
-    iconImage: {
-      type: String,
-      default: undefined
-    },
-    label: {
-      type: String,
-      required: true
-    },
-    windowName: {
-      type: String,
-      default: undefined
-    }
-  },
-  computed: {
-    iconClass() {
-      if (this.iconName) {
-        return 'a-icon__container--icon';
-      }
-      return 'a-icon__container--image';
-    },
-    isIcon() {
-      if (this.iconName) {
-        return true;
-      }
-      return false;
-    },
-    imgSrc() {
-      if (this.isIcon) {
-        const images = require.context('images/icons', false, /\.png$/);
-        return images('./' + this.iconName + '.png');
-      }
-      const images = require.context('images', false, /\.png$/);
-      return images('./' + this.iconImage + '.png');
-    }
-  },
-  methods: {
-    clickIcon() {
-      if (this.href) {
-        window.open(this.href, '_blank');
-        return;
-      }
-      // get current open windows
-      let openWindows = [];
-      if (this.$route.query.window) {
-        let windowQuery = this.$route.query.window;
-        if (Array.isArray(windowQuery)) {
-          openWindows = [...windowQuery];
-        } else {
-          openWindows = [windowQuery];
-        }
-      }
+<script setup>
+import { computed } from 'vue';
+import { useWindows } from '~composables/useWindows';
 
-      // if window is not yet open, add it to route
-      if (!openWindows.includes(this.windowName)) {
-        openWindows.push(this.windowName);
-        this.$router.replace({
-          query: { window: openWindows }
-        });
-      } else {
-        //   if window is open, refocus and bring to front
-        this.$store.commit('addWindow', this.windowName);
-      }
-    },
-    touchIcon(e) {
-      if (e.changedTouches) {
-        // safeguard for mobile touch icon vs window
-        e.preventDefault();
-        this.clickIcon();
-      }
-    }
+const iconImages = import.meta.glob('images/icons/*.png', {
+  eager: true,
+  import: 'default'
+});
+const images = import.meta.glob('images/*.png', {
+  eager: true,
+  import: 'default'
+});
+
+const props = defineProps({
+  alt: {
+    type: String,
+    required: true
+  },
+  aria: {
+    type: String,
+    required: true
+  },
+  href: {
+    type: String,
+    default: undefined
+  },
+  iconName: {
+    type: String,
+    default: undefined
+  },
+  iconImage: {
+    type: String,
+    default: undefined
+  },
+  label: {
+    type: String,
+    required: true
+  },
+  windowName: {
+    type: String,
+    default: undefined
   }
-};
+});
+
+const { openWindow } = useWindows();
+
+const iconClass = computed(() =>
+  props.iconName ? 'a-icon__container--icon' : 'a-icon__container--image'
+);
+
+const imgSrc = computed(() => {
+  if (props.iconName) {
+    return iconImages[`/src/assets/images/icons/${props.iconName}.png`];
+  }
+  return images[`/src/assets/images/${props.iconImage}.png`];
+});
+
+function clickIcon() {
+  if (props.href) {
+    window.open(props.href, '_blank');
+    return;
+  }
+  openWindow(props.windowName);
+}
+
+function touchIcon(e) {
+  if (e.changedTouches) {
+    // safeguard for mobile touch icon vs window
+    e.preventDefault();
+    clickIcon();
+  }
+}
 </script>
 
 <style lang="scss">

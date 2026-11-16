@@ -1,51 +1,28 @@
-import Vue from 'vue';
-import Vuex from 'vuex';
+import { defineStore } from 'pinia';
+import { ref } from 'vue';
 
-Vue.use(Vuex);
+// Tracks window stacking order. The last window in the list is on top.
+export const useWindowStore = defineStore('windows', () => {
+  const windowOrder = ref([]);
 
-export default new Vuex.Store({
-  state: {
-    windowOrder: [],
-    timeSinceLastClick: undefined
-  },
-  mutations: {
-    addWindow(state, windowName) {
-      let order = state.windowOrder;
-      // if window is already at end of list, do nothing
-      if (order[order.length - 1] == windowName) {
-        return;
-      }
+  function addWindow(windowName) {
+    // if window is already on top, do nothing
+    if (windowOrder.value.at(-1) === windowName) return;
 
-      // remove window id if it exists
-      order = order.filter(id => {
-        return id != windowName;
-      });
+    windowOrder.value = [
+      ...windowOrder.value.filter(id => id !== windowName),
+      windowName
+    ];
+  }
 
-      //   add window to top of array
-      order.push(windowName);
+  function removeWindow(windowName) {
+    windowOrder.value = windowOrder.value.filter(id => id !== windowName);
+  }
 
-      state.windowOrder = order;
-    },
-    removeWindow(state, windowName) {
-      let order = state.windowOrder;
+  // z-index for a window, 0 if it is not in the list
+  function getWindowIndex(windowName) {
+    return windowOrder.value.indexOf(windowName) + 1;
+  }
 
-      // remove window id if it exists
-      order = order.filter(id => id != windowName);
-
-      state.windowOrder = order;
-    }
-  },
-  getters: {
-    getWindowIndex: state => windowName => {
-      let index = state.windowOrder.indexOf(windowName);
-
-      if (windowName == -1) {
-        return undefined;
-      }
-
-      return index + 1;
-    }
-  },
-  actions: {},
-  modules: {}
+  return { windowOrder, addWindow, removeWindow, getWindowIndex };
 });

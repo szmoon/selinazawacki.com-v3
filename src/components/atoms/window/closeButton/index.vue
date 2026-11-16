@@ -2,23 +2,14 @@
   <div
     class="a-window__close-button"
     aria-label="close button"
-    @click="closeWindow"
+    @click="emit('closeWindow')"
   >
     <font-awesome-icon icon="times" color="white" />
   </div>
 </template>
 
-<script>
-import '~atoms/fontAwesomeIcons';
-
-export default {
-  name: 'CloseButton',
-  methods: {
-    closeWindow() {
-      this.$emit('closeWindow');
-    }
-  }
-};
+<script setup>
+const emit = defineEmits(['closeWindow']);
 </script>
 
 <style lang="scss">
