@@ -1,12 +1,12 @@
 import { computed, ref, watch } from 'vue';
 import { useRoute, useRouter } from 'vue-router';
-import { useStore } from 'vuex';
+import { useWindowStore } from '~/store';
 
 // Open windows are stored in the URL as ?window=a&window=b.
 export function useWindows() {
   const route = useRoute();
   const router = useRouter();
-  const store = useStore();
+  const store = useWindowStore();
 
   const openWindows = computed(() => {
     const query = route.query.window;
@@ -15,7 +15,7 @@ export function useWindows() {
   });
 
   function focusWindow(name) {
-    store.commit('addWindow', name);
+    store.addWindow(name);
   }
 
   function openWindow(name) {
@@ -30,7 +30,7 @@ export function useWindows() {
     router.replace({
       query: { window: openWindows.value.filter(item => item !== name) }
     });
-    store.commit('removeWindow', name);
+    store.removeWindow(name);
   }
 
   return { openWindows, focusWindow, openWindow, closeWindow };
@@ -38,7 +38,7 @@ export function useWindows() {
 
 // State for a single window: whether it is open and its stacking order.
 export function useWindowState(name) {
-  const store = useStore();
+  const store = useWindowStore();
   const { openWindows, focusWindow, closeWindow } = useWindows();
   const isOpen = ref(false);
 
@@ -54,7 +54,7 @@ export function useWindowState(name) {
     { immediate: true }
   );
 
-  const zIndex = computed(() => store.getters.getWindowIndex(name));
+  const zIndex = computed(() => store.getWindowIndex(name));
 
   return {
     isOpen,

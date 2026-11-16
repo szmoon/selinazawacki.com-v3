@@ -1,17 +1,28 @@
-import { describe, it, expect } from 'vitest';
-import store from '~/store';
+import { beforeEach, describe, expect, it } from 'vitest';
+import { createPinia, setActivePinia } from 'pinia';
+import { useWindowStore } from '~/store';
 
 describe('window order store', () => {
+  let store;
+
+  beforeEach(() => {
+    setActivePinia(createPinia());
+    store = useWindowStore();
+  });
+
   it('moves a refocused window to the top', () => {
-    store.commit('addWindow', 'about');
-    store.commit('addWindow', 'contact');
-    store.commit('addWindow', 'about');
-    expect(store.state.windowOrder).toEqual(['contact', 'about']);
-    expect(store.getters.getWindowIndex('about')).toBe(2);
+    store.addWindow('about');
+    store.addWindow('contact');
+    store.addWindow('about');
+    expect(store.windowOrder).toEqual(['contact', 'about']);
+    expect(store.getWindowIndex('about')).toBe(2);
   });
 
   it('removes a closed window', () => {
-    store.commit('removeWindow', 'about');
-    expect(store.state.windowOrder).toEqual(['contact']);
+    store.addWindow('about');
+    store.addWindow('contact');
+    store.removeWindow('about');
+    expect(store.windowOrder).toEqual(['contact']);
+    expect(store.getWindowIndex('about')).toBe(0);
   });
 });
