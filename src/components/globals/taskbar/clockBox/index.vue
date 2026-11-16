@@ -11,30 +11,18 @@
   </div>
 </template>
 
-<script>
+<script setup>
+import { onBeforeUnmount, ref } from 'vue';
 import { format } from 'date-fns';
 
-export default {
-  name: 'ClockBox',
-  data() {
-    return {
-      currentTime: '',
-      timer: undefined
-    };
-  },
-  created() {
-    let self = this;
+const now = () => format(new Date(), 'h:mm a');
 
-    this.currentTime = format(new Date(), 'h:mm a');
+const currentTime = ref(now());
+const timer = setInterval(() => {
+  currentTime.value = now();
+}, 30000);
 
-    this.timer = setInterval(function () {
-      self.currentTime = format(new Date(), 'h:mm a');
-    }, 30000);
-  },
-  beforeUnmount() {
-    clearInterval(this.timer);
-  }
-};
+onBeforeUnmount(() => clearInterval(timer));
 </script>
 
 <style lang="scss">

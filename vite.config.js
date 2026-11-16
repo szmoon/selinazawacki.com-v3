@@ -14,6 +14,7 @@ export default defineConfig({
       images: src('assets/images'),
       '~atoms': src('components/atoms'),
       '~components': src('components'),
+      '~composables': src('composables'),
       '~data': src('data'),
       '~globals': src('components/globals'),
       '~helpers': src('helpers'),

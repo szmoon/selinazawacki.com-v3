@@ -5,17 +5,9 @@
   </div>
 </template>
 
-<script>
+<script setup>
 import ClockBox from './clockBox';
 import StartButton from './startButton';
-
-export default {
-  name: 'Taskbar',
-  components: {
-    ClockBox,
-    StartButton
-  }
-};
 </script>
 
 <style lang="scss">

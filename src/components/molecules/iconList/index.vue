@@ -14,38 +14,28 @@
   </div>
 </template>
 
-<script>
+<script setup>
+import { computed } from 'vue';
 import Icon from '~atoms/icon';
 
-export default {
-  name: 'IconList',
-  components: {
-    Icon
+const props = defineProps({
+  iconData: {
+    type: Array,
+    required: true
   },
-  props: {
-    iconData: {
-      type: Array,
-      required: true
-    },
-    modifier: {
-      type: String,
-      default: 'horizontal',
-      validator(value) {
-        return ['horizontal', 'vertical'].indexOf(value) !== -1;
-      }
-    }
-  },
-  computed: {
-    classes() {
-      const classes = ['m-icon-list'];
-
-      let extraClass = classes[0] + '--' + this.modifier;
-      classes.push(extraClass);
-
-      return classes;
+  modifier: {
+    type: String,
+    default: 'horizontal',
+    validator(value) {
+      return ['horizontal', 'vertical'].indexOf(value) !== -1;
     }
   }
-};
+});
+
+const classes = computed(() => [
+  'm-icon-list',
+  `m-icon-list--${props.modifier}`
+]);
 </script>
 
 <style lang="scss">

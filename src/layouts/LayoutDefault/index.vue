@@ -16,27 +16,12 @@
   </div>
 </template>
 
-<script>
+<script setup>
 import WindowWithContent from '~molecules/windowWithContent';
 import IconList from '~molecules/iconList';
 import Taskbar from '~globals/taskbar';
 import iconData from '~data/home/icons.json';
 import windowData from '~data/windows.json';
-
-export default {
-  name: 'LayoutDefault',
-  components: {
-    WindowWithContent,
-    IconList,
-    Taskbar
-  },
-  data() {
-    return {
-      iconData,
-      windowData
-    };
-  }
-};
 </script>
 
 <style lang="scss">

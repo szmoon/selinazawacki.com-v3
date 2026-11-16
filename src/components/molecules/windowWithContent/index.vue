@@ -13,7 +13,8 @@
   </Window>
 </template>
 
-<script>
+<script setup>
+import { computed } from 'vue';
 import IconList from '~molecules/iconList';
 import Window from '~atoms/window';
 
@@ -22,29 +23,22 @@ const images = import.meta.glob('images/*.png', {
   import: 'default'
 });
 
-export default {
-  name: 'WindowWithContent',
-  components: {
-    IconList,
-    Window
-  },
-  props: {
-    data: {
-      type: Object,
-      required: true
-    }
-  },
-  computed: {
-    imgSrc() {
-      if (!this.data.contentImage) return;
-      return images[`/src/assets/images/${this.data.contentImage}`];
-    },
-    text() {
-      if (!this.data.contentText) return;
-      return this.data.contentText + '<span class="blinking-cursor">|</span>';
-    }
+const props = defineProps({
+  data: {
+    type: Object,
+    required: true
   }
-};
+});
+
+const imgSrc = computed(() => {
+  if (!props.data.contentImage) return;
+  return images[`/src/assets/images/${props.data.contentImage}`];
+});
+
+const text = computed(() => {
+  if (!props.data.contentText) return;
+  return props.data.contentText + '<span class="blinking-cursor">|</span>';
+});
 </script>
 
 <style lang="scss"></style>

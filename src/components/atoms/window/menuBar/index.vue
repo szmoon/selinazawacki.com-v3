@@ -8,12 +8,6 @@
   </div>
 </template>
 
-<script>
-export default {
-  name: 'MenuBar'
-};
-</script>
-
 <style lang="scss">
 @import './index.scss';
 </style>
