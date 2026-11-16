@@ -13,6 +13,15 @@
 </template>
 
 <script>
+const iconImages = import.meta.glob('images/icons/*.png', {
+  eager: true,
+  import: 'default'
+});
+const images = import.meta.glob('images/*.png', {
+  eager: true,
+  import: 'default'
+});
+
 export default {
   name: 'Icon',
   props: {
@@ -60,11 +69,9 @@ export default {
     },
     imgSrc() {
       if (this.isIcon) {
-        const images = require.context('images/icons', false, /\.png$/);
-        return images('./' + this.iconName + '.png');
+        return iconImages[`/src/assets/images/icons/${this.iconName}.png`];
       }
-      const images = require.context('images', false, /\.png$/);
-      return images('./' + this.iconImage + '.png');
+      return images[`/src/assets/images/${this.iconImage}.png`];
     }
   },
   methods: {

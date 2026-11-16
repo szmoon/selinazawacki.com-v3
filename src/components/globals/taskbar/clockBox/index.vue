@@ -27,11 +27,11 @@ export default {
 
     this.currentTime = format(new Date(), 'h:mm a');
 
-    this.timer = setInterval(function() {
+    this.timer = setInterval(function () {
       self.currentTime = format(new Date(), 'h:mm a');
     }, 30000);
   },
-  beforeDestroy() {
+  beforeUnmount() {
     clearInterval(this.timer);
   }
 };

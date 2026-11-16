@@ -17,6 +17,11 @@
 import IconList from '~molecules/iconList';
 import Window from '~atoms/window';
 
+const images = import.meta.glob('images/*.png', {
+  eager: true,
+  import: 'default'
+});
+
 export default {
   name: 'WindowWithContent',
   components: {
@@ -32,8 +37,7 @@ export default {
   computed: {
     imgSrc() {
       if (!this.data.contentImage) return;
-      const images = require.context('images', false, /\.png$/);
-      return images('./' + this.data.contentImage);
+      return images[`/src/assets/images/${this.data.contentImage}`];
     },
     text() {
       if (!this.data.contentText) return;

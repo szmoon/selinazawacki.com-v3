@@ -3,9 +3,11 @@
     <router-view />
     <div class="l-layout-default__icon-container">
       <IconList :icon-data="iconData" modifier="vertical" />
-      <template v-for="window in windowData">
-        <WindowWithContent :key="window.name" :data="window" />
-      </template>
+      <WindowWithContent
+        v-for="window in windowData"
+        :key="window.name"
+        :data="window"
+      />
     </div>
     <Taskbar />
     <!-- base window position off right side? -->

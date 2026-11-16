@@ -13,8 +13,8 @@
       class="a-window__top-bar"
       @mousedown="beginDrag"
       @mouseup="endDrag"
-      v-touch:start="touchBeginDrag"
-      v-touch:moving="touchDrag"
+      v-touch:press="touchBeginDrag"
+      v-touch:drag="touchDrag"
     >
       {{ title }}
       <CloseButton @closeWindow="closeWindow" />
@@ -28,7 +28,6 @@
 </template>
 
 <script>
-import '~atoms/fontAwesomeIcons';
 import { isMobileDevice } from '~helpers/deviceHelpers.js';
 import CloseButton from './closeButton';
 import MenuBar from './menuBar';
@@ -130,7 +129,7 @@ export default {
 
     this.checkWindowStatus();
   },
-  destroyed() {
+  unmounted() {
     window.removeEventListener('resize', this.handleResize);
   },
   watch: {
@@ -141,7 +140,7 @@ export default {
   mounted() {
     document.addEventListener('mouseleave', this.endDrag);
   },
-  beforeDestroy() {
+  beforeUnmount() {
     document.removeEventListener('mouseleave', this.endDrag);
   },
   methods: {

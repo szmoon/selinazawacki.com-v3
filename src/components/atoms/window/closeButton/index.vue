@@ -9,10 +9,9 @@
 </template>
 
 <script>
-import '~atoms/fontAwesomeIcons';
-
 export default {
   name: 'CloseButton',
+  emits: ['closeWindow'],
   methods: {
     closeWindow() {
       this.$emit('closeWindow');
