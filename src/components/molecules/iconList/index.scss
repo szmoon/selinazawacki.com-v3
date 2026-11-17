@@ -7,6 +7,8 @@
 
 .m-icon-list--horizontal {
   flex-direction: row;
+  flex-wrap: wrap;
+  align-content: flex-start;
 }
 
 .m-icon-list--vertical {

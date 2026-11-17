@@ -30,8 +30,8 @@
   {
     "iconName": "cd",
     "iconAlt": "Rainbow CD Windows XP Icon",
-    "iconAria": "Open shop in new window",
+    "iconAria": "Open shop window",
     "iconLabel": "shop",
-    "href": "https://shop.selinazawacki.com/"
+    "windowName": "shop"
   }
 ]

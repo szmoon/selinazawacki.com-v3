@@ -45,6 +45,8 @@
     padding: 5px;
   }
   display: flex;
+  min-height: 0;
+  overflow: auto;
 }
 
 .a-window__content--image {

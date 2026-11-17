@@ -64,11 +64,18 @@
     "aria": "Network links window",
     "icons": [
       {
-        "iconName": "twitter",
-        "iconAlt": "Twitter logo",
-        "iconAria": "Open selina's twitter",
-        "iconLabel": "twitter",
-        "href": "https://twitter.com/selinazawacki"
+        "iconName": "instagram",
+        "iconAlt": "Instagram logo",
+        "iconAria": "Open selina's instagram",
+        "iconLabel": "instagram",
+        "href": "https://www.instagram.com/szmoon"
+      },
+      {
+        "iconName": "makerworld",
+        "iconAlt": "MakerWorld logo",
+        "iconAria": "Open selina's makerworld profile",
+        "iconLabel": "makerworld",
+        "href": "https://makerworld.com/en/@szmoon"
       },
       {
         "iconName": "linkedin",
@@ -90,10 +97,32 @@
       "desktop": { "top": "25%", "left": "300px" }
     },
     "size": {
-      "mobile": { "width": "220px", "height": "210px" },
+      "mobile": { "width": "220px", "height": "230px" },
       "desktop": { "width": "390px", "height": "330px" }
     },
     "title": "network"
+  },
+  {
+    "name": "shop",
+    "aria": "Shop links window",
+    "icons": [
+      {
+        "iconName": "folder-lavender",
+        "iconAlt": "Lavender Folder Windows XP Icon",
+        "iconAria": "Open selina's spoonflower shop",
+        "iconLabel": "spoonflower",
+        "href": "https://www.spoonflower.com/profiles/szmoon"
+      }
+    ],
+    "initialPosition": {
+      "mobile": { "top": "330px", "left": "90px" },
+      "desktop": { "top": "40%", "left": "400px" }
+    },
+    "size": {
+      "mobile": { "width": "220px", "height": "210px" },
+      "desktop": { "width": "390px", "height": "330px" }
+    },
+    "title": "shop"
   },
   {
     "name": "contact",
